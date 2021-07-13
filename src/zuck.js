@@ -81,15 +81,15 @@ module.exports = (window => {
                 let viewersItemView = '';
                 viewersArray.map((item) => {
                     viewersItemView += `
-            <li>
-            <div class="media s-v-media align-items-center">
-              <img src="${item.profileThumbs ? item.profileThumbs.split(',')[0] : 'https://starclusive-static-assets.s3.amazonaws.com/user-avatar.png'}">
-              <div class="media-body">
-                <h4>${item.name}</h4>
-              </div>
-            </div>
-          </li>
-            `;
+  <li>
+  <div class="media s-v-media align-items-center">
+    <img src="${item.profileThumbs ? item.profileThumbs.split(',')[0] : 'https://starclusive-static-assets.s3.amazonaws.com/user-avatar.png'}">
+    <div class="media-body">
+      <h4>${item.name}</h4>
+    </div>
+  </div>
+</li>
+  `;
                 });
                 return viewersItemView;
             };
@@ -304,37 +304,37 @@ module.exports = (window => {
                             template: {
                                 timelineItem(itemData) {
                                     return `
-                            <div class="story ${get(itemData, 'seen') === true ? (!get(itemData, 'ownStory') ? 'seen' : 'ownStorySeen') : ''}">
-                            <a class="item-link" href="${get(itemData, 'link')}">
-                            <span class="item-preview">
-                            <img lazy="eager" src="${get(itemData, 'currentPreview')}" />
-                            </span>
-                            <span class="info" itemProp="author" itemScope itemType="http://schema.org/Person">
-                            <strong class="name" itemProp="name">${get(itemData, 'name')}</strong>
-                            <span class="time">${get(itemData, 'lastUpdatedAgo')}</span>
-                            </span>
-                            <div class="upload-btn-wrapper align-self-center user-image cursor-pointer">
-                            <img src="${
-                            (option('avatars') || !get(itemData, 'currentPreview'))
-                            ? get(itemData, 'photo')
-                            : get(itemData, 'currentPreview')
-                            }" alt="" class="t-img rounded-circle">
-                            </div>
-                            </a>
-                            <ul class="items"></ul>
-                            </div>`;
+                  <div class="story ${get(itemData, 'seen') === true ? (!get(itemData, 'ownStory') ? 'seen' : 'ownStorySeen') : ''}">
+                  <a class="item-link" href="${get(itemData, 'link')}">
+                  <span class="item-preview">
+                  <img lazy="eager" src="${get(itemData, 'currentPreview')}" />
+                  </span>
+                  <span class="info" itemProp="author" itemScope itemType="http://schema.org/Person">
+                  <strong class="name" itemProp="name">${get(itemData, 'name')}</strong>
+                  <span class="time">${get(itemData, 'lastUpdatedAgo')}</span>
+                  </span>
+                  <div class="upload-btn-wrapper align-self-center user-image cursor-pointer">
+                  <img src="${
+                  (option('avatars') || !get(itemData, 'currentPreview'))
+                  ? get(itemData, 'photo')
+                  : get(itemData, 'currentPreview')
+                  }" alt="" class="t-img rounded-circle">
+                  </div>
+                  </a>
+                  <ul class="items"></ul>
+                  </div>`;
                                 },
 
                                 timelineStoryItem(itemData) {
                                     const reserved = ['id', 'seen', 'src', 'link', 'linkText', 'time', 'type', 'length', 'preview'];
                                     let attributes = `
-                              href="${get(itemData, 'src')}"
-                              data-link="${get(itemData, 'link')}"
-                              data-linkText="${get(itemData, 'linkText')}",
-                              data-time="${get(itemData, 'time')}"
-                              data-type="${get(itemData, 'type')}"
-                              data-length="${get(itemData, 'length')}"
-                              `;
+                    href="${get(itemData, 'src')}"
+                    data-link="${get(itemData, 'link')}"
+                    data-linkText="${get(itemData, 'linkText')}",
+                    data-time="${get(itemData, 'time')}"
+                    data-type="${get(itemData, 'type')}"
+                    data-length="${get(itemData, 'length')}"
+                    `;
                                     for (const dataKey in itemData) {
                                         if (reserved.indexOf(dataKey) === -1) {
                                             attributes += ` data-${dataKey}="${itemData[dataKey]}"`;
@@ -348,24 +348,24 @@ module.exports = (window => {
 
                                 viewerItem(storyData, currentStoryItem) {
                                     return `<div class="story-viewer">
-                            <div class="head">
-                                <div class="left"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview">
-                            <img lazy="eager" class="profilePhoto" src="${get(storyData, 'photo')}" />
-                          </span>
-                                    <div class="info"> <strong class="name">${get(storyData, 'name')}</strong> <span class="time">${get(storyData, 'timeAgo')}</span> </div>
-                                </div>
-                                
-                                <div class="right"> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
-                                    <a class="close" tabIndex="2"> <img src="assets/img/Layer 3.svg" style="height:30px;width:30px"> </a>
-                                </div>
-                                
-                                
-                                </div>
-                            <div class="slides-pointers">
-                                <div class="wrap"></div>
-                            </div> ${option('paginationArrows') ? `
-                            <div class="slides-pagination"> <span class="previous">&lsaquo;</span> <span class="next">&rsaquo;</span> </div>` : ''} 
-                        </div>`;
+                  <div class="head">
+                      <div class="left"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview">
+                  <img lazy="eager" class="profilePhoto" src="${get(storyData, 'photo')}" />
+                </span>
+                          <div class="info"> <strong class="name">${get(storyData, 'name')}</strong> <span class="time">${get(storyData, 'timeAgo')}</span> </div>
+                      </div>
+                      
+                      <div class="right"> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
+                          <a class="close" tabIndex="2"> <img src="assets/img/Layer 3.svg" style="height:30px;width:30px"> </a>
+                      </div>
+                      
+                      
+                      </div>
+                  <div class="slides-pointers">
+                      <div class="wrap"></div>
+                  </div> ${option('paginationArrows') ? `
+                  <div class="slides-pagination"> <span class="previous">&lsaquo;</span> <span class="next">&rsaquo;</span> </div>` : ''} 
+              </div>`;
         },
 
         viewerItemPointer (index, currentIndex, item) {
@@ -494,7 +494,7 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
 
         if (
           (!slideItems.previous && !direction) ||
-            (!slideItems.next && direction)
+  (!slideItems.next && direction)
         ) {
           if (!option('rtl')) {
             return false;
@@ -568,7 +568,7 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
               );
 
               items[0].innerHTML =
-                        `<b style="${duration.style.cssText}"></b>`;
+              `<b style="${duration.style.cssText}"></b>`;
               onAnimationEnd(items[0].firstElementChild, () => {
                 zuck.nextItem(false);
               });
@@ -920,8 +920,8 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
             const tryFullScreen = function () {
               if (
                 modalContainer.classList.contains('fullscreen') &&
-                        option('autoFullScreen') &&
-                        window.screen.availWidth <= 1024
+              option('autoFullScreen') &&
+              window.screen.availWidth <= 1024
               ) {
                 fullScreen(modalContainer);
               }
@@ -931,7 +931,7 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
 
             if (option('openEffect')) {
               const storyEl = query(
-                        `#${id} [data-id="${storyId}"] .item-preview`
+              `#${id} [data-id="${storyId}"] .item-preview`
               );
               const pos = findPos(storyEl);
 
@@ -963,7 +963,7 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
           const callback = function () {
             const lastStory = zuck.internalData.currentStory;
             const lastStoryTimelineElement = query(
-                    `#${id} [data-id="${lastStory}"]`
+          `#${id} [data-id="${lastStory}"]`
             );
 
             if (lastStoryTimelineElement) {
@@ -1121,7 +1121,7 @@ story.classList.remove('seen');
 
     // BIBLICAL
     const getStoryMorningGlory = function (what) {
-    // my wife told me to stop singing Wonderwall. I SAID MAYBE.
+      // my wife told me to stop singing Wonderwall. I SAID MAYBE.
 
       const currentStory = zuck.internalData.currentStory;
       const whatElementYouMean = `${what}ElementSibling`;
@@ -1177,7 +1177,7 @@ story.classList.remove('seen');
             setVendorVariable(
               itemPointer.getElementsByTagName('b')[0].style,
               'AnimationDuration',
-                    `${video.duration}s`
+          `${video.duration}s`
             );
           }
         };
