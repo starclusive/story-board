@@ -348,6 +348,7 @@ module.exports = (window => {
                                 },
 
                                 viewerItem(storyData, currentStoryItem) {
+                                    console.log(storyData);
                                     return `<div class="story-viewer">
                   <div class="head">
                       <div class="left"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview">
@@ -591,9 +592,7 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
       const createStoryViewer = function (storyData, className, forcePlay) {
         const modalSlider = query(`#zuck-modal-slider-${id}`);
         const storyItems = get(storyData, 'items');
-
-        storyData.timeAgo = storyItems && storyItems[0] ? timeAgo(get(storyItems[0], 'time')) : '';
-
+        storyData.timeAgo = storyItems && storyItems[0] ? timeAgo(get(storyItems[storyData.items.length - 1], 'time')) : '';
         let htmlItems = '';
         let pointerItems = '';
 
