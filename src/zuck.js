@@ -333,7 +333,8 @@ module.exports = (window => {
                     data-linkText="${get(itemData, 'linkText')}",
                     data-time="${get(itemData, 'time')}"
                     data-type="${get(itemData, 'type')}"
-                    data-length="${get(itemData, 'length')}"
+                    data-length="${get(itemData, 'length')}
+                    data-seen="${get(itemData, 'seen')}"
                     `;
                                     for (const dataKey in itemData) {
                                         if (reserved.indexOf(dataKey) === -1) {
@@ -378,7 +379,7 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
 
         viewerItemBody (index, currentIndex, item) {
           return `<div 
-class="item ${get(item, 'seen') === true ? 'seen' : ''} ${currentIndex === index ? 'active' : ''}"
+class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
 ${
 get(item, 'type') === 'video'
@@ -599,23 +600,31 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
         const storyId = get(storyData, 'id');
         const slides = document.createElement('div');
         const currentItem = get(storyData, 'currentItem') || 0;
+        let continueStoryIndex;
+        continueStoryIndex = storyData.items.findIndex((x) => !x.isStorySeen);
+        if (continueStoryIndex < 0) {
+          continueStoryIndex = storyData.items.length - 1;
+        } else {
+          continueStoryIndex = continueStoryIndex;
+        }
         const exists = query(`#zuck-modal .story-viewer[data-story-id="${storyId}"]`);
-
         if (exists) {
           return false;
         }
 
         slides.className = 'slides';
+
         each(storyItems, (i, item) => {
           item.timeAgo = timeAgo(get(item, 'time'));
-          if (currentItem > i) {
+          if (continueStoryIndex > i) {
             storyData.items[i].timeAgo = item.timeAgo;
             storyData.items[i].seen = true;
+            storyData.items[i].isStorySeen = true;
             item.seen = true;
+            item.isStorySeen = true;
           }
-
-          pointerItems += option('template', 'viewerItemPointer')(i, currentItem, item);
-          htmlItems += option('template', 'viewerItemBody')(i, currentItem, item);
+          pointerItems += option('template', 'viewerItemPointer')(i, continueStoryIndex, item);
+          htmlItems += option('template', 'viewerItemBody')(i, continueStoryIndex, item);
         });
 
         slides.innerHTML = htmlItems;
@@ -890,12 +899,19 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
 
             const storyData = zuck.data[storyId];
             const currentItem = storyData.currentItem || 0;
+            let continueStoryIndex;
+            continueStoryIndex = storyData.items.findIndex((x) => !x.isStorySeen);
+            if (continueStoryIndex < 0) {
+              continueStoryIndex = storyData.items.length - 1;
+            } else {
+              continueStoryIndex = continueStoryIndex;
+            }
             const modalSlider = query(`#zuck-modal-slider-${id}`);
 
             createStoryTouchEvents(modalSlider);
 
             zuck.internalData.currentStory = storyId;
-            storyData.currentItem = currentItem;
+            storyData.currentItem = continueStoryIndex;
 
             if (option('backNative')) {
               window.location.hash = `#!${id}`;
@@ -1041,11 +1057,13 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
             viewersDetails: storyData.viewersDetails,
             totalViewCount: +storyData.totalViewCount,
             preview: storyData.preview,
+            isStorySeen: storyData.seen,
             ownStory: story.getAttribute('data-own-story')
           };
           const data = zuck.data[storyId].items;
           const findAlreadExist = data.find((x) => x.id === item.id);
           zuck.data[storyId].items = !findAlreadExist ? [...zuck.data[storyId].items, item] : zuck.data[storyId].items;
+
           // collect all attributes
           const all = a.attributes;
           // exclude the reserved options
@@ -1275,7 +1293,6 @@ story.classList.remove('seen');
       }
       if (data.seen === false) {
         zuck.internalData.seenItems[storyId] = false;
-
         saveLocalData('seenItems', zuck.internalData.seenItems);
       }
 
@@ -1350,7 +1367,6 @@ story.classList.remove('seen');
       if (!storyViewer || storyViewer.touchMove === 1) {
         return false;
       }
-
       const currentItemElements = storyViewer.querySelectorAll(`[data-index="${currentItem}"]`);
       const currentPointer = currentItemElements[0];
       const currentItemElement = currentItemElements[1];
@@ -1359,7 +1375,6 @@ story.classList.remove('seen');
       const nextItems = storyViewer.querySelectorAll(`[data-index="${navigateItem}"]`);
       const nextPointer = nextItems[0];
       const nextItem = nextItems[1];
-
       if (storyViewer && nextPointer && nextItem) {
         const navigateItemCallback = function () {
           if (direction === 'previous') {
@@ -1368,6 +1383,7 @@ story.classList.remove('seen');
           } else {
             currentPointer.classList.add('seen');
             currentItemElement.classList.add('seen');
+            zuck.data[currentStory].items[currentItem].isStorySeen = true;
           }
 
           currentPointer.classList.remove('active');
