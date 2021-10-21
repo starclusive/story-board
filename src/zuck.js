@@ -358,7 +358,7 @@ module.exports = (window => {
                       <div class="right"> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
                           <a class="close" tabIndex="2"> <img src="assets/img/Layer 3.svg" style="height:30px;width:30px"> </a>
                       </div>
-                      ${currentStoryItem.ownStory?`<div class="right"> 
+                      ${storyData.ownStory?`<div class="right"> 
                       <a class="viewID" tabIndex="2"> <svg id="open_eye" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 18 18">
                       <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" style="fill: #fff;"/>
                       <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" style="fill: #fff;"/>
@@ -1350,9 +1350,9 @@ story.classList.remove('seen');
       story.parentNode.removeChild(story);
     };
 
-    zuck.addItem = (storyId, data, append) => {
+     zuck.addItem = (storyId, data, append) => {
       const story = query(`#${id} > [data-id="${storyId}"]`);
-      if (!option('reactive')) {
+      if (!option('reactive') && story) {
         const li = document.createElement('li');
         const el = story.querySelectorAll('.items')[0];
         li.className = get(data, 'seen') ? 'seen' : '';
@@ -1367,9 +1367,10 @@ story.classList.remove('seen');
           prepend(el, li);
         }
       }
-
-      parseItems(story, true, data);
-    };
+      if (story) {
+        parseItems(story, true, data);
+      }
+    };  
 
     zuck.removeItem = (storyId, itemId) => {
       const item = query(`#${id} > [data-id="${storyId}"] [data-id="${itemId}"]`);
