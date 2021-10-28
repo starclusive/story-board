@@ -389,7 +389,7 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
 class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
 ${get(item, 'type') === 'video'
-? `<div class="story-left" title="Previous Story">&#8592;</div>`
+? `<div class="story-left"  title="Previous Story">&#8592;</div>`
 : ``}
 ${get(item, 'type') === 'video'
               ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>
@@ -422,7 +422,7 @@ ${item.ownStory
     </div>
   </div>`}
   ${get(item, 'type') === 'video'
-              ? `<div class="story-right" title="Next Story">&#8594;</div>`
+              ? `<div class="story-right"  title="Next Story">&#8594;</div>`
               : ``}
 </div>`;
         }
@@ -898,18 +898,20 @@ ${item.ownStory
               nextTimer = false;
 
               const navigateItem = function () {
-                if (!direction) {
-                  if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
-                    if (option('rtl')) {
-                      zuck.navigateItem('previous', event);
+                if(event.target.className != 'story-left' && event.target.className != 'story-right'){
+                  if (!direction) {
+                    if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
+                      if (option('rtl')) {
+                        zuck.navigateItem('previous', event);
+                      } else {
+                        zuck.navigateItem('next', event);
+                      }
                     } else {
-                      zuck.navigateItem('next', event);
-                    }
-                  } else {
-                    if (option('rtl')) {
-                      zuck.navigateItem('next', event);
-                    } else {
-                      zuck.navigateItem('previous', event);
+                      if (option('rtl')) {
+                        zuck.navigateItem('next', event);
+                      } else {
+                        zuck.navigateItem('previous', event);
+                      }
                     }
                   }
                 }
