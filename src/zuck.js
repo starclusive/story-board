@@ -359,11 +359,13 @@ module.exports = (window => {
                           <a class="close" tabIndex="2"> <img src="assets/img/Layer 3.svg" style="height:30px;width:30px"> </a>
                       </div>
                       ${storyData.ownStory?`<div class="right"> 
-                      <a class="viewID" tabIndex="2"> <svg id="open_eye" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 18 18">
-                      <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" style="fill: #fff;"/>
-                      <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" style="fill: #fff;"/>
-                      <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" style="fill: #fff;"/>
+                      <a class="viewID" tabIndex="2"> <svg id="open_eye" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24">
+                      <path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z" style="fill: #fff;"/>
                       </svg>
+                      </a>
+                     </div>`:``}
+                     ${storyData.ownStory?`<div class="delete" id="delet_eye0"> 
+                      <a class="viewDeleteID" id="delet_eye1" tabIndex="2"> <svg id="delet_eye2" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path id="delet_eye3" d="M0 0h24v24H0z" fill="none"/><path id="delet_eye4" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" style="fill: #fff;"/></svg>
                       </a>
                      </div>`:``}
                       </div>
@@ -387,12 +389,16 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
 class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
 ${get(item, 'type') === 'video'
-              ? `<video class="media" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>
-<b class="tip muted">${option('language', 'unmute')}</b>`
+? `<div class="story-left"  title="Previous Story">&#8592;</div>`
+: ``}
+${get(item, 'type') === 'video'
+              ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>
+<b class="tip muted mutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;" id="videoMute">${option('language', 'unmute')}</b>
+<b class="tip muted unmutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;display:none;" id="videoUNMute">${option('language', 'mute')}</b>`
               : `<img loading="auto" class="media" src="${get(item, 'src')}" ${get(item, 'type')} />
 `}
 ${item.ownStory
-              ? `<div class="s-v-block">
+              ? `<div class="s-v-block" style="display:none">
 <label class="v-label" id="ViewStoryCount">
 ${item.totalViewCount ? `Viewer(s)` : 'No Viewer(s) Yet'} </label>
 <ul class="list-unstyled s-v-list">
@@ -401,17 +407,29 @@ ${item.viewersDetails.length > 0
                 : ''}
 </ul>
 </div>` : ''}
-${get(item, 'link')
-              ? `<a class="tip link" href="${get(item, 'link')}" rel="noopener" target="_blank">
-${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'visitLink') : get(item, 'linkText')}
-</a>`
-              : ''
-            }
+${item.ownStory
+  ? ' ':`
+  <div class="col-lg-8 col-md-8 col-8 tip link">
+  <div class="do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
+      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" maxlength="50" formControlName="txtArea" style="border-radius:30px !important;height:42px">
+        <div class="upload-btn-wrapper-msg-send align-self-center">
+            <button id='BTN_Submit_Comment' #BTN_Submit_Comment  type="button" class="btn pt-0 pb-0 pl-0 pr-1">
+                <img id='IMG_Submit_Comment' #IMG_Submit_Comment src="assets/img/sendmsgbtn.svg" style="width: 40px;
+                height: 40px;
+                margin-left: 5px;">
+            </button>
+        </div>
+    </div>
+  </div>`}
+  ${get(item, 'type') === 'video'
+              ? `<div class="story-right"  title="Next Story">&#8594;</div>`
+              : ``}
 </div>`;
         }
       },
       language: {
         unmute: 'Touch to unmute',
+        mute: 'Touch to mute',
         keyboardTip: 'Press space to see next',
         visitLink: 'Visit link',
         time: {
@@ -454,8 +472,6 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
 
           if (code === 27) {
             modal.close();
-          } else if (code === 13 || code === 32) {
-            modal.next();
           }
         };
 
@@ -483,7 +499,6 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
 
       const moveStoryItem = function (direction) {
         const modalContainer = query('#zuck-modal');
-
         let target = '';
         let useless = '';
         let transform = 0;
@@ -564,7 +579,6 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
             if (items) {
               items = items.querySelectorAll('[data-index].active');
               const duration = items[0].firstElementChild;
-
               zuck.data[storyId].currentItem = parseInt(
                 items[0].getAttribute('data-index'),
                 10
@@ -650,7 +664,6 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
 
           video.onplay = () => {
             addMuted(video);
-
             storyViewer.classList.remove('stopped');
             storyViewer.classList.remove('paused');
             storyViewer.classList.remove('loading');
@@ -682,14 +695,14 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
             if (el.className === "viewID") {
               let elements = document.getElementsByClassName('s-v-block');
               for (let index = 0; index < elements.length; index++) {
-                if (elements[0].style.display === "none") {
-                  elements[0].style.display = "block";
+                if (elements[index].style.display === "none") {
+                  elements[index].style.display = "block";
                   document.getElementById("open_eye").setAttribute('viewBox', '0 0 18 18')
                   document.getElementById("open_eye").innerHTML = `<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" style="fill: #fff;"/>
                   <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z" style="fill: #fff;"/>
                   <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z" style="fill: #fff;"/>`;
                 } else {
-                  elements[0].style.display = "none";
+                  elements[index].style.display = "none";
                   document.getElementById("open_eye").setAttribute('viewBox', '0 0 24 24')
                   document.getElementById("open_eye").innerHTML = 
                   `<path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z" style="fill: #fff;"/>`;
@@ -820,6 +833,20 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
           }
         };
 
+        modalSlider.addEventListener('click', function(e) {
+          if(e.target.className == 'story-right') {
+            zuck.navigateItem('next', event)
+          }
+          if(e.target.className == 'story-left') {
+            if(zuck.data[zuck.internalData.currentStory].currentItem == 0) {
+              moveStoryItem();
+            }else {
+              zuck.navigateItem('previous', event);
+              zuck.internalData["currentVideoElement"].currentTime = 0;
+            }
+          }
+        });
+
         const touchEnd = function (event) {
           const storyViewer = query('#zuck-modal .viewing');
           const lastTouchOffset = touchOffset;
@@ -871,18 +898,20 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
               nextTimer = false;
 
               const navigateItem = function () {
-                if (!direction) {
-                  if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
-                    if (option('rtl')) {
-                      zuck.navigateItem('previous', event);
+                if(event.target.className != 'story-left' && event.target.className != 'story-right'){
+                  if (!direction) {
+                    if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
+                      if (option('rtl')) {
+                        zuck.navigateItem('previous', event);
+                      } else {
+                        zuck.navigateItem('next', event);
+                      }
                     } else {
-                      zuck.navigateItem('next', event);
-                    }
-                  } else {
-                    if (option('rtl')) {
-                      zuck.navigateItem('next', event);
-                    } else {
-                      zuck.navigateItem('previous', event);
+                      if (option('rtl')) {
+                        zuck.navigateItem('next', event);
+                      } else {
+                        zuck.navigateItem('previous', event);
+                      }
                     }
                   }
                 }
@@ -1032,7 +1061,6 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
         },
         close() {
           const modalContainer = query('#zuck-modal');
-
           const callback = function () {
             if (option('backNative')) {
               window.location.hash = '';
@@ -1047,7 +1075,6 @@ ${!get(item, 'linkText') || get(item, 'linkText') === '' ? option('language', 'v
               modalContainer.style.display = 'none';
             }
           };
-
           option('callbacks', 'onClose')(zuck.internalData.currentStory, callback);
         }
       };
@@ -1381,58 +1408,60 @@ story.classList.remove('seen');
     };
 
     zuck.navigateItem = zuck.nextItem = (direction, event) => {
-      const currentStory = zuck.internalData.currentStory;
-      const currentItem = zuck.data[currentStory].currentItem;
-      const storyViewer = query(`#zuck-modal .story-viewer[data-story-id="${currentStory}"]`);
-      const directionNumber = direction === 'previous' ? -1 : 1;
+      if(event !== undefined){
+        const currentStory = zuck.internalData.currentStory;
+        const currentItem = zuck.data[currentStory].currentItem;
+        const storyViewer = query(`#zuck-modal .story-viewer[data-story-id="${currentStory}"]`);
+        const directionNumber = direction === 'previous' ? -1 : 1;
 
-      if (!storyViewer || storyViewer.touchMove === 1) {
-        return false;
-      }
-      const currentItemElements = storyViewer.querySelectorAll(`[data-index="${currentItem}"]`);
-      const currentPointer = currentItemElements[0];
-      const currentItemElement = currentItemElements[1];
+        if (!storyViewer || storyViewer.touchMove === 1) {
+          return false;
+        }
+        const currentItemElements = storyViewer.querySelectorAll(`[data-index="${currentItem}"]`);
+        const currentPointer = currentItemElements[0];
+        const currentItemElement = currentItemElements[1];
 
-      const navigateItem = currentItem + directionNumber;
-      const nextItems = storyViewer.querySelectorAll(`[data-index="${navigateItem}"]`);
-      const nextPointer = nextItems[0];
-      const nextItem = nextItems[1];
-      if (storyViewer && nextPointer && nextItem) {
-        const navigateItemCallback = function () {
-          if (direction === 'previous') {
-            currentPointer.classList.remove('seen');
-            currentItemElement.classList.remove('seen');
-          } else {
-            currentPointer.classList.add('seen');
-            currentItemElement.classList.add('seen');
-            zuck.data[currentStory].items[currentItem].isStorySeen = true;
+        const navigateItem = currentItem + directionNumber;
+        const nextItems = storyViewer.querySelectorAll(`[data-index="${navigateItem}"]`);
+        const nextPointer = nextItems[0];
+        const nextItem = nextItems[1];
+        if (storyViewer && nextPointer && nextItem) {
+          const navigateItemCallback = function () {
+            if (direction === 'previous') {
+              currentPointer.classList.remove('seen');
+              currentItemElement.classList.remove('seen');
+            } else {
+              currentPointer.classList.add('seen');
+              currentItemElement.classList.add('seen');
+              zuck.data[currentStory].items[currentItem].isStorySeen = true;
+            }
+
+            currentPointer.classList.remove('active');
+            currentItemElement.classList.remove('active');
+
+            nextPointer.classList.remove('seen');
+            nextPointer.classList.add('active');
+
+            nextItem.classList.remove('seen');
+            nextItem.classList.add('active');
+
+            each(storyViewer.querySelectorAll('.time'), (i, el) => {
+              el.innerText = timeAgo(nextItem.getAttribute('data-time'));
+            });
+
+            zuck.data[currentStory].currentItem = zuck.data[currentStory].currentItem + directionNumber;
+
+            playVideoItem(storyViewer, nextItems, event);
+            zuck.sendViewItemUpdate();
+          };
+
+          let callback = option('callbacks', 'onNavigateItem');
+          callback = !callback ? option('callbacks', 'onNextItem') : option('callbacks', 'onNavigateItem');
+          callback(currentStory, nextItem.getAttribute('data-story-id'), navigateItemCallback);
+        } else if (storyViewer) {
+          if (direction !== 'previous') {
+            modal.next(event);
           }
-
-          currentPointer.classList.remove('active');
-          currentItemElement.classList.remove('active');
-
-          nextPointer.classList.remove('seen');
-          nextPointer.classList.add('active');
-
-          nextItem.classList.remove('seen');
-          nextItem.classList.add('active');
-
-          each(storyViewer.querySelectorAll('.time'), (i, el) => {
-            el.innerText = timeAgo(nextItem.getAttribute('data-time'));
-          });
-
-          zuck.data[currentStory].currentItem = zuck.data[currentStory].currentItem + directionNumber;
-
-          playVideoItem(storyViewer, nextItems, event);
-          zuck.sendViewItemUpdate();
-        };
-
-        let callback = option('callbacks', 'onNavigateItem');
-        callback = !callback ? option('callbacks', 'onNextItem') : option('callbacks', 'onNavigateItem');
-        callback(currentStory, nextItem.getAttribute('data-story-id'), navigateItemCallback);
-      } else if (storyViewer) {
-        if (direction !== 'previous') {
-          modal.next(event);
         }
       }
     };
