@@ -129,13 +129,13 @@ module.exports = (window => {
           ) {
             if (document.exitFullscreen) {
               document.exitFullscreen()
-                .catch(() => { });
+                .catch(() => {});
             } else if (document.mozCancelFullScreen) {
               document.mozCancelFullScreen()
-                .catch(() => { });
+                .catch(() => {});
             } else if (document.mozCancelFullScreen) {
               document.mozCancelFullScreen()
-                .catch(() => { });
+                .catch(() => {});
             }
           }
         } else {
@@ -287,7 +287,7 @@ module.exports = (window => {
         onOpen: function (storyId, callback) {
           callback();
         },
-        onView: function (storyId) { },
+        onView: function (storyId) {},
         onEnd: function (storyId, callback) {
           callback();
         },
@@ -415,8 +415,1326 @@ ${item.viewersDetails.length > 0
 ${item.ownStory
   ? ' ':`
   <div class="col-lg-8 col-md-8 col-8 tip link">
+  <div class="container">
+  <div class="chat-panel" style="display:none">
+    <div class="emoji-header menu-tabs hor-flex-parent">
+      <span class="menu-item flex-kid" data-react="smileys-and-people">😀</span>
+      <span class="menu-item flex-kid" data-react="animals-and-nature">🐶</span>
+      <span class="menu-item flex-kid" data-react="food-and-drink">🍏</span>
+      <span class="menu-item flex-kid" data-react="activity">⚽</span>
+      <span class="menu-item flex-kid" data-react="travel-and-places">🚗</span>
+      <span class="menu-item flex-kid" data-react="objects">⌚</span>
+      <span class="menu-item flex-kid" data-react="symbols">❤</span>
+      <span class="menu-item flex-kid" data-react="flags">🇳🇱</span>
+    </div>
+    <div class="emoji-panel">
+    <div data-react="smileys-and-people" class="emoji-panel-tab-smileys-and-people">
+      <span>😀</span>
+      <span>😬</span>
+      <span>😁</span>
+      <span>😂</span>
+      <span>😃</span>
+      <span>😄</span>
+      <span>😅</span>
+      <span>😆</span>
+      <span>😇</span>
+      <span>😉</span>
+      <span>😊</span>
+      <span>🙂</span>
+      <span>🙃</span>
+      <span>☺</span>
+      <span>😋</span>
+      <span>😌</span>
+      <span>😍</span>
+      <span>😘</span>
+      <span>😗</span>
+      <span>😙</span>
+      <span>😚</span>
+      <span>😜</span>
+      <span>😝</span>
+      <span>😛</span>
+      <span>🤑</span>
+      <span>🤓</span>
+      <span>😎</span>
+      <span>🤗</span>
+      <span>😏</span>
+      <span>😶</span>
+      <span>😐</span>
+      <span>😑</span>
+      <span>😒</span>
+      <span>🙄</span>
+      <span>🤔</span>
+      <span>😳</span>
+      <span>😞</span>
+      <span>😟</span>
+      <span>😠</span>
+      <span>😡</span>
+      <span>😔</span>
+      <span>😕</span>
+      <span>🙁</span>
+      <span>☹</span>
+      <span>😣</span>
+      <span>😖</span>
+      <span>😫</span>
+      <span>😩</span>
+      <span>😤</span>
+      <span>😮</span>
+      <span>😱</span>
+      <span>😨</span>
+      <span>😰</span>
+      <span>😯</span>
+      <span>😦</span>
+      <span>😧</span>
+      <span>😢</span>
+      <span>😥</span>
+      <span>😪</span>
+      <span>😓</span>
+      <span>😭</span>
+      <span>😵</span>
+      <span>😲</span>
+      <span>🤐</span>
+      <span>😷</span>
+      <span>🤒</span>
+      <span>🤕</span>
+      <span>😴</span>
+      <span>💤</span>
+      <span>💩</span>
+      <span>😈</span>
+      <span>👿</span>
+      <span>👹</span>
+      <span>👺</span>
+      <span>💀</span>
+      <span>👻</span>
+      <span>👽</span>
+      <span>🤖</span>
+      <span>😺</span>
+      <span>😸</span>
+      <span>😹</span>
+      <span>😻</span>
+      <span>😼</span>
+      <span>😽</span>
+      <span>🙀</span>
+      <span>😿</span>
+      <span>😾</span>
+      <span>🙌</span>
+      <span>👏</span>
+      <span>👋</span>
+      <span>👍</span>
+      <span>👎</span>
+      <span>👊</span>
+      <span>✊</span>
+      <span>✌</span>
+      <span>👌</span>
+      <span>✋</span>
+      <span>👐</span>
+      <span>💪</span>
+      <span>🙏</span>
+      <span>☝</span>
+      <span>👆</span>
+      <span>👇</span>
+      <span>👈</span>
+      <span>👉</span>
+      <span>🖕</span>
+      <span>🖐</span>
+      <span>🤘</span>
+      <span>🖖</span>
+      <span>✍️</span>
+      <span>💅</span>
+      <span>👄</span>
+      <span>👅</span>
+      <span>👂</span>
+      <span>👃</span>
+      <span>👁</span>
+      <span>👀</span>
+      <span>👤</span>
+      <span>👥</span>
+      <span>🗣</span>
+      <span>👶</span>
+      <span>👦</span>
+      <span>👧</span>
+      <span>👨</span>
+      <span>👩</span>
+      <span>👱</span>
+      <span>👴</span>
+      <span>👵</span>
+      <span>👲</span>
+      <span>👳</span>
+      <span>👮</span>
+      <span>👷</span>
+      <span>💂</span>
+      <span>🕵</span>
+      <span>🎅</span>
+      <span>👼</span>
+      <span>👸</span>
+      <span>👰</span>
+      <span>🚶</span>
+      <span>🏃</span>
+      <span>💃</span>
+      <span>👯</span>
+      <span>👫</span>
+      <span>👬</span>
+      <span>👭</span>
+      <span>🙇</span>
+      <span>💁</span>
+      <span>🙅</span>
+      <span>🙆</span>
+      <span>🙋</span>
+      <span>🙎</span>
+      <span>🙍</span>
+      <span>💇</span>
+      <span>💆</span>
+      <span>💑</span>
+      <span>👩‍❤️‍👩</span>
+      <span>👨‍❤️‍👨</span>
+      <span>💏</span>
+      <span>👩‍❤️‍💋‍👩</span>
+      <span>👨‍❤️‍💋‍👨</span>
+      <span>👪</span>
+      <span>👨‍👩‍👧</span>
+      <span>👨‍👩‍👧‍👦</span>
+      <span>👨‍👩‍👦‍👦</span>
+      <span>👨‍👩‍👧‍👧</span>
+      <span>👩‍👩‍👦</span>
+      <span>👩‍👩‍👧</span>
+      <span>👩‍👩‍👧‍👦</span>
+      <span>👩‍👩‍👦‍👦</span>
+      <span>👩‍👩‍👧‍👧</span>
+      <span>👨‍👨‍👦</span>
+      <span>👨‍👨‍👧</span>
+      <span>👨‍👨‍👧‍👦</span>
+      <span>👨‍👨‍👦‍👦</span>
+      <span>👨‍👨‍👧‍👧</span>
+      <span>👚</span>
+      <span>👕</span>
+      <span>👖</span>
+      <span>👔</span>
+      <span>👗</span>
+      <span>👙</span>
+      <span>👘</span>
+      <span>💄</span>
+      <span>💋</span>
+      <span>👣</span>
+      <span>👠</span>
+      <span>👡</span>
+      <span>👢</span>
+      <span>👞</span>
+      <span>👟</span>
+      <span>👒</span>
+      <span>🎩</span>
+      <span>🎓</span>
+      <span>👑</span>
+      <span>⛑</span>
+      <span>🎒</span>
+      <span>👝</span>
+      <span>👛</span>
+      <span>👜</span>
+      <span>💼</span>
+      <span>👓</span>
+      <span>🕶</span>
+      <span>💍</span>
+      <span>🌂</span>
+    </div>
+    <div data-react="animals-and-nature" style="display:none" class="emoji-panel-tab-animals-and-nature">
+      <span>🐶</span>
+      <span>🐱</span>
+      <span>🐭</span>
+      <span>🐹</span>
+      <span>🐰</span>
+      <span>🐻</span>
+      <span>🐼</span>
+      <span>🐨</span>
+      <span>🐯</span>
+      <span>🦁</span>
+      <span>🐮</span>
+      <span>🐷</span>
+      <span>🐽</span>
+      <span>🐸</span>
+      <span>🐙</span>
+      <span>🐵</span>
+      <span>🙈</span>
+      <span>🙉</span>
+      <span>🙊</span>
+      <span>🐒</span>
+      <span>🐔</span>
+      <span>🐧</span>
+      <span>🐦</span>
+      <span>🐤</span>
+      <span>🐣</span>
+      <span>🐥</span>
+      <span>🐺</span>
+      <span>🐗</span>
+      <span>🐴</span>
+      <span>🦄</span>
+      <span>🐝</span>
+      <span>🐛</span>
+      <span>🐌</span>
+      <span>🐞</span>
+      <span>🐜</span>
+      <span>🕷</span>
+      <span>🦂</span>
+      <span>🦀</span>
+      <span>🐍</span>
+      <span>🐢</span>
+      <span>🐠</span>
+      <span>🐟</span>
+      <span>🐡</span>
+      <span>🐬</span>
+      <span>🐳</span>
+      <span>🐋</span>
+      <span>🐊</span>
+      <span>🐆</span>
+      <span>🐅</span>
+      <span>🐃</span>
+      <span>🐂</span>
+      <span>🐄</span>
+      <span>🐪</span>
+      <span>🐫</span>
+      <span>🐘</span>
+      <span>🐐</span>
+      <span>🐏</span>
+      <span>🐑</span>
+      <span>🐎</span>
+      <span>🐖</span>
+      <span>🐀</span>
+      <span>🐁</span>
+      <span>🐓</span>
+      <span>🦃</span>
+      <span>🕊</span>
+      <span>🐕</span>
+      <span>🐩</span>
+      <span>🐈</span>
+      <span>🐇</span>
+      <span>🐿</span>
+      <span>🐾</span>
+      <span>🐉</span>
+      <span>🐲</span>
+      <span>🌵</span>
+      <span>🎄</span>
+      <span>🌲</span>
+      <span>🌳</span>
+      <span>🌴</span>
+      <span>🌱</span>
+      <span>🌿</span>
+      <span>☘</span>
+      <span>🍀</span>
+      <span>🎍</span>
+      <span>🎋</span>
+      <span>🍃</span>
+      <span>🍂</span>
+      <span>🍁</span>
+      <span>🌾</span>
+      <span>🌺</span>
+      <span>🌻</span>
+      <span>🌹</span>
+      <span>🌷</span>
+      <span>🌼</span>
+      <span>🌸</span>
+      <span>💐</span>
+      <span>🍄</span>
+      <span>🌰</span>
+      <span>🎃</span>
+      <span>🐚</span>
+      <span>🕸</span>
+      <span>🌎</span>
+      <span>🌍</span>
+      <span>🌏</span>
+      <span>🌕</span>
+      <span>🌖</span>
+      <span>🌗</span>
+      <span>🌘</span>
+      <span>🌑</span>
+      <span>🌒</span>
+      <span>🌓</span>
+      <span>🌔</span>
+      <span>🌚</span>
+      <span>🌝</span>
+      <span>🌛</span>
+      <span>🌜</span>
+      <span>🌞</span>
+      <span>🌙</span>
+      <span>⭐</span>
+      <span>🌟</span>
+      <span>💫</span>
+      <span>✨</span>
+      <span>☄</span>
+      <span>☀</span>
+      <span>🌤</span>
+      <span>⛅</span>
+      <span>🌥</span>
+      <span>🌦</span>
+      <span>☁</span>
+      <span>🌧</span>
+      <span>⛈</span>
+      <span>🌩</span>
+      <span>⚡</span>
+      <span>🔥</span>
+      <span>💥</span>
+      <span>❄</span>
+      <span>🌨</span>
+      <span>☃</span>
+      <span>⛄</span>
+      <span>🌬</span>
+      <span>💨</span>
+      <span>🌪</span>
+      <span>🌫</span>
+      <span>☂</span>
+      <span>☔</span>
+      <span>💧</span>
+      <span>💦</span>
+      <span>🌊</span>
+    </div>
+    <div data-react="food-and-drink" style="display:none" class="emoji-panel-tab-food-and-drink">
+      <span>🍏</span>
+      <span>🍎</span>
+      <span>🍐</span>
+      <span>🍊</span>
+      <span>🍋</span>
+      <span>🍌</span>
+      <span>🍉</span>
+      <span>🍇</span>
+      <span>🍓</span>
+      <span>🍈</span>
+      <span>🍒</span>
+      <span>🍑</span>
+      <span>🍍</span>
+      <span>🍅</span>
+      <span>🍆</span>
+      <span>🌶</span>
+      <span>🌽</span>
+      <span>🍠</span>
+      <span>🍯</span>
+      <span>🍞</span>
+      <span>🧀</span>
+      <span>🍗</span>
+      <span>🍖</span>
+      <span>🍤</span>
+      <span>🍳</span>
+      <span>🍔</span>
+      <span>🍟</span>
+      <span>🌭</span>
+      <span>🍕</span>
+      <span>🍝</span>
+      <span>🌮</span>
+      <span>🌯</span>
+      <span>🍜</span>
+      <span>🍲</span>
+      <span>🍥</span>
+      <span>🍣</span>
+      <span>🍱</span>
+      <span>🍛</span>
+      <span>🍙</span>
+      <span>🍚</span>
+      <span>🍘</span>
+      <span>🍢</span>
+      <span>🍡</span>
+      <span>🍧</span>
+      <span>🍨</span>
+      <span>🍦</span>
+      <span>🍰</span>
+      <span>🎂</span>
+      <span>🍮</span>
+      <span>🍬</span>
+      <span>🍭</span>
+      <span>🍫</span>
+      <span>🍿</span>
+      <span>🍩</span>
+      <span>🍪</span>
+      <span>🍺</span>
+      <span>🍻</span>
+      <span>🍷</span>
+      <span>🍸</span>
+      <span>🍹</span>
+      <span>🍾</span>
+      <span>🍶</span>
+      <span>🍵</span>
+      <span>☕</span>
+      <span>🍼</span>
+      <span>🍴</span>
+      <span>🍽</span>
+    </div>
+    <div data-react="activity" style="display:none" class="emoji-panel-tab-activity">
+      <span>⚽</span>
+      <span>🏀</span>
+      <span>🏈</span>
+      <span>⚾</span>
+      <span>🎾</span>
+      <span>🏐</span>
+      <span>🏉</span>
+      <span>🎱</span>
+      <span>⛳</span>
+      <span>🏌</span>
+      <span>🏓</span>
+      <span>🏸</span>
+      <span>🏒</span>
+      <span>🏑</span>
+      <span>🏏</span>
+      <span>🎿</span>
+      <span>⛷</span>
+      <span>🏂</span>
+      <span>⛸</span>
+      <span>🏹</span>
+      <span>🎣</span>
+      <span>🚣</span>
+      <span>🏊</span>
+      <span>🏄</span>
+      <span>🛀</span>
+      <span>⛹</span>
+      <span>🏋</span>
+      <span>🚴</span>
+      <span>🚵</span>
+      <span>🏇</span>
+      <span>🕴</span>
+      <span>🏆</span>
+      <span>🎽</span>
+      <span>🏅</span>
+      <span>🎖</span>
+      <span>🎗</span>
+      <span>🏵</span>
+      <span>🎫</span>
+      <span>🎟</span>
+      <span>🎭</span>
+      <span>🎨</span>
+      <span>🎪</span>
+      <span>🎤</span>
+      <span>🎧</span>
+      <span>🎼</span>
+      <span>🎹</span>
+      <span>🎷</span>
+      <span>🎺</span>
+      <span>🎸</span>
+      <span>🎻</span>
+      <span>🎬</span>
+      <span>🎮</span>
+      <span>👾</span>
+      <span>🎯</span>
+      <span>🎲</span>
+      <span>🎰</span>
+      <span>🎳</span>
+    </div>
+    <div data-react="travel-and-places" style="display:none" class="emoji-panel-tab-travel-and-places">
+      <span>🚗</span>
+      <span>🚕</span>
+      <span>🚙</span>
+      <span>🚌</span>
+      <span>🚎</span>
+      <span>🏎</span>
+      <span>🚓</span>
+      <span>🚑</span>
+      <span>🚒</span>
+      <span>🚐</span>
+      <span>🚚</span>
+      <span>🚛</span>
+      <span>🚜</span>
+      <span>🏍</span>
+      <span>🚲</span>
+      <span>🚨</span>
+      <span>🚔</span>
+      <span>🚍</span>
+      <span>🚘</span>
+      <span>🚖</span>
+      <span>🚡</span>
+      <span>🚠</span>
+      <span>🚟</span>
+      <span>🚃</span>
+      <span>🚋</span>
+      <span>🚝</span>
+      <span>🚄</span>
+      <span>🚅</span>
+      <span>🚈</span>
+      <span>🚞</span>
+      <span>🚂</span>
+      <span>🚆</span>
+      <span>🚇</span>
+      <span>🚊</span>
+      <span>🚉</span>
+      <span>🚁</span>
+      <span>🛩</span>
+      <span>✈</span>
+      <span>🛫</span>
+      <span>🛬</span>
+      <span>⛵</span>
+      <span>🛥</span>
+      <span>🚤</span>
+      <span>⛴</span>
+      <span>🛳</span>
+      <span>🚀</span>
+      <span>🛰</span>
+      <span>💺</span>
+      <span>⚓</span>
+      <span>🚧</span>
+      <span>⛽</span>
+      <span>🚏</span>
+      <span>🚦</span>
+      <span>🚥</span>
+      <span>🏁</span>
+      <span>🚢</span>
+      <span>🎡</span>
+      <span>🎢</span>
+      <span>🎠</span>
+      <span>🏗</span>
+      <span>🌁</span>
+      <span>🗼</span>
+      <span>🏭</span>
+      <span>⛲</span>
+      <span>🎑</span>
+      <span>⛰</span>
+      <span>🏔</span>
+      <span>🗻</span>
+      <span>🌋</span>
+      <span>🗾</span>
+      <span>🏕</span>
+      <span>⛺</span>
+      <span>🏞</span>
+      <span>🛣</span>
+      <span>🛤</span>
+      <span>🌅</span>
+      <span>🌄</span>
+      <span>🏜</span>
+      <span>🏖</span>
+      <span>🏝</span>
+      <span>🌇</span>
+      <span>🌆</span>
+      <span>🏙</span>
+      <span>🌃</span>
+      <span>🌉</span>
+      <span>🌌</span>
+      <span>🌠</span>
+      <span>🎇</span>
+      <span>🎆</span>
+      <span>🌈</span>
+      <span>🏘</span>
+      <span>🏰</span>
+      <span>🏯</span>
+      <span>🏟</span>
+      <span>🗽</span>
+      <span>🏠</span>
+      <span>🏡</span>
+      <span>🏚</span>
+      <span>🏢</span>
+      <span>🏬</span>
+      <span>🏣</span>
+      <span>🏤</span>
+      <span>🏥</span>
+      <span>🏦</span>
+      <span>🏨</span>
+      <span>🏪</span>
+      <span>🏫</span>
+      <span>🏩</span>
+      <span>💒</span>
+      <span>🏛</span>
+      <span>⛪</span>
+      <span>🕌</span>
+      <span>🕍</span>
+      <span>🕋</span>
+      <span>⛩</span>
+    </div>
+    <div data-react="objects" style="display:none" class="emoji-panel-tab-objects">
+      <span>⌚</span>
+      <span>📱</span>
+      <span>📲</span>
+      <span>💻</span>
+      <span>⌨</span>
+      <span>🖥</span>
+      <span>🖨</span>
+      <span>🖱</span>
+      <span>🖲</span>
+      <span>🕹</span>
+      <span>🗜</span>
+      <span>💽</span>
+      <span>💾</span>
+      <span>💿</span>
+      <span>📀</span>
+      <span>📼</span>
+      <span>📷</span>
+      <span>📸</span>
+      <span>📹</span>
+      <span>🎥</span>
+      <span>📽</span>
+      <span>🎞</span>
+      <span>📞</span>
+      <span>☎</span>
+      <span>📟</span>
+      <span>📠</span>
+      <span>📺</span>
+      <span>📻</span>
+      <span>🎙</span>
+      <span>🎚</span>
+      <span>🎛</span>
+      <span>⏱</span>
+      <span>⏲</span>
+      <span>⏰</span>
+      <span>🕰</span>
+      <span>⏳</span>
+      <span>⌛</span>
+      <span>📡</span>
+      <span>🔋</span>
+      <span>🔌</span>
+      <span>💡</span>
+      <span>🔦</span>
+      <span>🕯</span>
+      <span>🗑</span>
+      <span>🛢</span>
+      <span>💸</span>
+      <span>💵</span>
+      <span>💴</span>
+      <span>💶</span>
+      <span>💷</span>
+      <span>💰</span>
+      <span>💳</span>
+      <span>💎</span>
+      <span>⚖</span>
+      <span>🔧</span>
+      <span>🔨</span>
+      <span>⚒</span>
+      <span>🛠</span>
+      <span>⛏</span>
+      <span>🔩</span>
+      <span>⚙</span>
+      <span>⛓</span>
+      <span>🔫</span>
+      <span>💣</span>
+      <span>🔪</span>
+      <span>🗡</span>
+      <span>⚔</span>
+      <span>🛡</span>
+      <span>🚬</span>
+      <span>☠</span>
+      <span>⚰</span>
+      <span>⚱</span>
+      <span>🏺</span>
+      <span>🔮</span>
+      <span>📿</span>
+      <span>💈</span>
+      <span>⚗</span>
+      <span>🔭</span>
+      <span>🔬</span>
+      <span>🕳</span>
+      <span>💊</span>
+      <span>💉</span>
+      <span>🌡</span>
+      <span>🏷</span>
+      <span>🔖</span>
+      <span>🚽</span>
+      <span>🚿</span>
+      <span>🛁</span>
+      <span>🔑</span>
+      <span>🗝</span>
+      <span>🛋</span>
+      <span>🛌</span>
+      <span>🛏</span>
+      <span>🚪</span>
+      <span>🛎</span>
+      <span>🖼</span>
+      <span>🗺</span>
+      <span>⛱</span>
+      <span>🗿</span>
+      <span>🛍</span>
+      <span>🎈</span>
+      <span>🎏</span>
+      <span>🎀</span>
+      <span>🎁</span>
+      <span>🎊</span>
+      <span>🎉</span>
+      <span>🎎</span>
+      <span>🎐</span>
+      <span>🎌</span>
+      <span>🏮</span>
+      <span>✉</span>
+      <span>📩</span>
+      <span>📨</span>
+      <span>📧</span>
+      <span>💌</span>
+      <span>📮</span>
+      <span>📪</span>
+      <span>📫</span>
+      <span>📬</span>
+      <span>📭</span>
+      <span>📦</span>
+      <span>📯</span>
+      <span>📥</span>
+      <span>📤</span>
+      <span>📜</span>
+      <span>📃</span>
+      <span>📑</span>
+      <span>📊</span>
+      <span>📈</span>
+      <span>📉</span>
+      <span>📄</span>
+      <span>📅</span>
+      <span>📆</span>
+      <span>🗓</span>
+      <span>📇</span>
+      <span>🗃</span>
+      <span>🗳</span>
+      <span>🗄</span>
+      <span>📋</span>
+      <span>🗒</span>
+      <span>📁</span>
+      <span>📂</span>
+      <span>🗂</span>
+      <span>🗞</span>
+      <span>📰</span>
+      <span>📓</span>
+      <span>📕</span>
+      <span>📗</span>
+      <span>📘</span>
+      <span>📙</span>
+      <span>📔</span>
+      <span>📒</span>
+      <span>📚</span>
+      <span>📖</span>
+      <span>🔗</span>
+      <span>📎</span>
+      <span>🖇</span>
+      <span>✂</span>
+      <span>📐</span>
+      <span>📏</span>
+      <span>📌</span>
+      <span>📍</span>
+      <span>🚩</span>
+      <span>🏳</span>
+      <span>🏴</span>
+      <span>🔐</span>
+      <span>🔒</span>
+      <span>🔓</span>
+      <span>🔏</span>
+      <span>🖊</span>
+      <span>🖋</span>
+      <span>✒</span>
+      <span>📝</span>
+      <span>✏</span>
+      <span>🖍</span>
+      <span>🖌</span>
+      <span>🔍</span>
+      <span>🔎</span>
+    </div>
+    <div data-react="symbols" style="display:none" class="emoji-panel-tab-symbols">
+      <span>❤</span>
+      <span>💛</span>
+      <span>💚</span>
+      <span>💙</span>
+      <span>💜</span>
+      <span>💔</span>
+      <span>❣</span>
+      <span>💕</span>
+      <span>💞</span>
+      <span>💓</span>
+      <span>💗</span>
+      <span>💖</span>
+      <span>💘</span>
+      <span>💝</span>
+      <span>💟</span>
+      <span>☮</span>
+      <span>✝</span>
+      <span>☪</span>
+      <span>🕉</span>
+      <span>☸</span>
+      <span>✡</span>
+      <span>🔯</span>
+      <span>🕎</span>
+      <span>☯</span>
+      <span>☦</span>
+      <span>🛐</span>
+      <span>⛎</span>
+      <span>♈</span>
+      <span>♉</span>
+      <span>♊</span>
+      <span>♋</span>
+      <span>♌</span>
+      <span>♍</span>
+      <span>♎</span>
+      <span>♏</span>
+      <span>♐</span>
+      <span>♑</span>
+      <span>♒</span>
+      <span>♓</span>
+      <span>🆔</span>
+      <span>⚛</span>
+      <span>🈳</span>
+      <span>🈹</span>
+      <span>☢</span>
+      <span>☣</span>
+      <span>📴</span>
+      <span>📳</span>
+      <span>🈶</span>
+      <span>🈚</span>
+      <span>🈸</span>
+      <span>🈺</span>
+      <span>🈷</span>
+      <span>✴</span>
+      <span>🆚</span>
+      <span>🉑</span>
+      <span>💮</span>
+      <span>🉐</span>
+      <span>㊙</span>
+      <span>㊗</span>
+      <span>🈴</span>
+      <span>🈵</span>
+      <span>🈲</span>
+      <span>🅰</span>
+      <span>🅱</span>
+      <span>🆎</span>
+      <span>🆑</span>
+      <span>🅾</span>
+      <span>🆘</span>
+      <span>⛔</span>
+      <span>📛</span>
+      <span>🚫</span>
+      <span>❌</span>
+      <span>⭕</span>
+      <span>💢</span>
+      <span>♨</span>
+      <span>🚷</span>
+      <span>🚯</span>
+      <span>🚳</span>
+      <span>🚱</span>
+      <span>🔞</span>
+      <span>📵</span>
+      <span>❗</span>
+      <span>❕</span>
+      <span>❓</span>
+      <span>❔</span>
+      ‼<span>⁉</span>
+      <span>💯</span>
+      <span>🔅</span>
+      <span>🔆</span>
+      <span>🔱</span>
+      <span>⚜</span>
+      <span>〽</span>
+      <span>⚠</span>
+      <span>🚸</span>
+      <span>🔰</span>
+      <span>♻</span>
+      <span>🈯</span>
+      <span>💹</span>
+      <span>❇</span>
+      <span>✳</span>
+      <span>❎</span>
+      <span>✅</span>
+      <span>💠</span>
+      <span>🌀</span>
+      <span>➿</span>
+      <span>🌐</span>
+      <span>Ⓜ</span>
+      <span>🏧</span>
+      <span>🈂</span>
+      <span>🛂</span>
+      <span>🛃</span>
+      <span>🛄</span>
+      <span>🛅</span>
+      <span>♿</span>
+      <span>🚭</span>
+      <span>🚾</span>
+      <span>🅿</span>
+      <span>🚰</span>
+      <span>🚹</span>
+      <span>🚺</span>
+      <span>🚼</span>
+      <span>🚻</span>
+      <span>🚮</span>
+      <span>🎦</span>
+      <span>📶</span>
+      <span>🈁</span>
+      <span>🆖</span>
+      <span>🆗</span>
+      <span>🆙</span>
+      <span>🆒</span>
+      <span>🆕</span>
+      <span>🆓</span>
+      <span>0⃣</span>
+      <span>1⃣</span>
+      <span>2⃣</span>
+      <span>3⃣</span>
+      <span>4⃣</span>
+      <span>5⃣</span>
+      <span>6⃣</span>
+      <span>7⃣</span>
+      <span>8⃣</span>
+      <span>9⃣</span>
+      <span>🔟</span>
+      <span>🔢</span>
+      <span>▶</span>
+      <span>⏸</span>
+      <span>⏯</span>
+      <span>⏹</span>
+      <span>⏺</span>
+      <span>⏭</span>
+      <span>⏮</span>
+      <span>⏩</span>
+      <span>⏪</span>
+      <span>🔀</span>
+      <span>🔁</span>
+      <span>🔂</span>
+      <span>◀</span>
+      <span>🔼</span>
+      <span>🔽</span>
+      <span>⏫</span>
+      <span>⏬</span>
+      <span>➡</span>
+      <span>⬅</span>
+      <span>⬆</span>
+      <span>⬇</span>
+      <span>↗</span>
+      <span>↘</span>
+      <span>↙</span>
+      <span>↖</span>
+      <span>↕</span>
+      <span>↔</span>
+      <span>🔄</span>
+      <span>↪</span>
+      <span>↩</span>
+      <span>⤴</span>
+      <span>⤵</span>
+      <span>#⃣</span>
+      <span>*⃣</span>
+      <span>ℹ</span>
+      <span>🔤</span>
+      <span>🔡</span>
+      <span>🔠</span>
+      <span>🔣</span>
+      <span>🎵</span>
+      <span>🎶</span>
+      <span>〰</span>
+      <span>➰</span>
+      <span>✔</span>
+      <span>🔃</span>
+      <span>➕</span>
+      <span>➖</span>
+      <span>➗</span>
+      <span>✖</span>
+      <span>💲</span>
+      <span>💱</span>
+      <span>🔚</span>
+      <span>🔙</span>
+      <span>🔛</span>
+      <span>🔝</span>
+      <span>🔜</span>
+      <span>☑</span>
+      <span>🔘</span>
+      <span>⚪</span>
+      <span>⚫</span>
+      <span>🔴</span>
+      <span>🔵</span>
+      <span>🔸</span>
+      <span>🔹</span>
+      <span>🔶</span>
+      <span>🔷</span>
+      <span>🔺</span>
+      <span>▪</span>
+      <span>▫</span>
+      <span>⬛</span>
+      <span>⬜</span>
+      <span>🔻</span>
+      <span>◼</span>
+      <span>◻</span>
+      <span>◾</span>
+      <span>◽</span>
+      <span>🔲</span>
+      <span>🔳</span>
+      <span>🔈</span>
+      <span>🔉</span>
+      <span>🔊</span>
+      <span>🔇</span>
+      <span>📣</span>
+      <span>📢</span>
+      <span>🔔</span>
+      <span>🔕</span>
+      <span>🃏</span>
+      <span>🀄</span>
+      <span>♠</span>
+      <span>♣</span>
+      <span>♥</span>
+      <span>♦</span>
+      <span>🎴</span>
+      <span>🗨</span>
+      <span>💭</span>
+      <span>🗯</span>
+      <span>💬</span>
+      <span>🕐</span>
+      <span>🕑</span>
+      <span>🕒</span>
+      <span>🕓</span>
+      <span>🕔</span>
+      <span>🕕</span>
+      <span>🕖</span>
+      <span>🕗</span>
+      <span>🕘</span>
+      <span>🕙</span>
+      <span>🕚</span>
+      <span>🕛</span>
+      <span>🕜</span>
+      <span>🕝</span>
+      <span>🕞</span>
+      <span>🕟</span>
+      <span>🕠</span>
+      <span>🕡</span>
+      <span>🕢</span>
+      <span>🕣</span>
+      <span>🕤</span>
+      <span>🕥</span>
+      <span>🕦</span>
+      <span>🕧</span>
+    </div>
+    <div data-react="flags" style="display:none" class="emoji-panel-tab-flags">
+      <span>🇦🇫</span>
+      <span>🇦🇽</span>
+      <span>🇦🇱</span>
+      <span>🇩🇿</span>
+      <span>🇦🇸</span>
+      <span>🇦🇩</span>
+      <span>🇦🇴</span>
+      <span>🇦🇮</span>
+      <span>🇦🇶</span>
+      <span>🇦🇬</span>
+      <span>🇦🇷</span>
+      <span>🇦🇲</span>
+      <span>🇦🇼</span>
+      <span>🇦🇺</span>
+      <span>🇦🇹</span>
+      <span>🇦🇿</span>
+      <span>🇧🇸</span>
+      <span>🇧🇭</span>
+      <span>🇧🇩</span>
+      <span>🇧🇧</span>
+      <span>🇧🇾</span>
+      <span>🇧🇪</span>
+      <span>🇧🇿</span>
+      <span>🇧🇯</span>
+      <span>🇧🇲</span>
+      <span>🇧🇹</span>
+      <span>🇧🇴</span>
+      <span>🇧🇶</span>
+      <span>🇧🇦</span>
+      <span>🇧🇼</span>
+      <span>🇧🇷</span>
+      <span>🇮🇴</span>
+      <span>🇻🇬</span>
+      <span>🇧🇳</span>
+      <span>🇧🇬</span>
+      <span>🇧</span>
+      <span>🇫</span>
+      <span>🇧🇮</span>
+      <span>🇨🇻</span>
+      <span>🇰🇭</span>
+      <span>🇨🇲</span>
+      <span>🇨🇦</span>
+      <span>🇮🇨</span>
+      <span>🇰🇾</span>
+      <span>🇨🇫</span>
+      <span>🇹🇩</span>
+      <span>🇨🇱</span>
+      <span>🇨🇳</span>
+      <span>🇨🇽</span>
+      <span>🇨🇨</span>
+      <span>🇨🇴</span>
+      <span>🇰🇲</span>
+      <span>🇨🇬</span>
+      <span>🇨🇩</span>
+      <span>🇨🇰</span>
+      <span>🇨🇷</span>
+      <span>🇭🇷</span>
+      <span>🇨🇺</span>
+      <span>🇨🇼</span>
+      <span>🇨🇾</span>
+      <span>🇨🇿</span>
+      <span>🇩🇰</span>
+      <span>🇩🇯</span>
+      <span>🇩🇲</span>
+      <span>🇩🇴</span>
+      <span>🇪🇨</span>
+      <span>🇪🇬</span>
+      <span>🇸🇻</span>
+      <span>🇬🇶</span>
+      <span>🇪🇷</span>
+      <span>🇪🇪</span>
+      <span>🇪🇹</span>
+      <span>🇪🇺</span>
+      <span>🇫🇰</span>
+      <span>🇫🇴</span>
+      <span>🇫🇯</span>
+      <span>🇫🇮</span>
+      <span>🇫🇷</span>
+      <span>🇬🇫</span>
+      <span>🇵🇫</span>
+      <span>🇹🇫</span>
+      <span>🇬🇦</span>
+      <span>🇬🇲</span>
+      <span>🇬🇪</span>
+      <span>🇩🇪</span>
+      <span>🇬🇭</span>
+      <span>🇬🇮</span>
+      <span>🇬🇷</span>
+      <span>🇬🇱</span>
+      <span>🇬🇩</span>
+      <span>🇬🇵</span>
+      <span>🇬🇺</span>
+      <span>🇬🇹</span>
+      <span>🇬🇬</span>
+      <span>🇬🇳</span>
+      <span>🇬🇼</span>
+      <span>🇬🇾</span>
+      <span>🇭🇹</span>
+      <span>🇭🇳</span>
+      <span>🇭🇰</span>
+      <span>🇭🇺</span>
+      <span>🇮🇸</span>
+      <span>🇮🇳</span>
+      <span>🇮🇩</span>
+      <span>🇮🇷</span>
+      <span>🇮🇶</span>
+      <span>🇮🇪</span>
+      <span>🇮🇲</span>
+      <span>🇮🇱</span>
+      <span>🇮🇹</span>
+      <span>🇨🇮</span>
+      <span>🇯🇲</span>
+      <span>🇯🇵</span>
+      <span>🇯🇪</span>
+      <span>🇯🇴</span>
+      <span>🇰🇿</span>
+      <span>🇰🇪</span>
+      <span>🇰🇮</span>
+      <span>🇽🇰</span>
+      <span>🇰🇼</span>
+      <span>🇰🇬</span>
+      <span>🇱🇦</span>
+      <span>🇱🇻</span>
+      <span>🇱🇧</span>
+      <span>🇱🇸</span>
+      <span>🇱🇷</span>
+      <span>🇱🇾</span>
+      <span>🇱🇮</span>
+      <span>🇱🇹</span>
+      <span>🇱🇺</span>
+      <span>🇲🇴</span>
+      <span>🇲🇰</span>
+      <span>🇲🇬</span>
+      <span>🇲🇼</span>
+      <span>🇲🇾</span>
+      <span>🇲🇻</span>
+      <span>🇲🇱</span>
+      <span>🇲🇹</span>
+      <span>🇲🇭</span>
+      <span>🇲🇶</span>
+      <span>🇲🇷</span>
+      <span>🇲🇺</span>
+      <span>🇾🇹</span>
+      <span>🇲🇽</span>
+      <span>🇫🇲</span>
+      <span>🇲🇩</span>
+      <span>🇲🇨</span>
+      <span>🇲🇳</span>
+      <span>🇲🇪</span>
+      <span>🇲🇸</span>
+      <span>🇲🇦</span>
+      <span>🇲🇿</span>
+      <span>🇲🇲</span>
+      <span>🇳🇦</span>
+      <span>🇳🇷</span>
+      <span>🇳🇵</span>
+      <span>🇳🇱</span>
+      <span>🇳🇨</span>
+      <span>🇳🇿</span>
+      <span>🇳🇮</span>
+      <span>🇳🇪</span>
+      <span>🇳🇬</span>
+      <span>🇳🇺</span>
+      <span>🇳🇫</span>
+      <span>🇲🇵</span>
+      <span>🇰🇵</span>
+      <span>🇳🇴</span>
+      <span>🇴🇲</span>
+      <span>🇵🇰</span>
+      <span>🇵🇼</span>
+      <span>🇵🇸</span>
+      <span>🇵🇦</span>
+      <span>🇵🇬</span>
+      <span>🇵🇾</span>
+      <span>🇵🇪</span>
+      <span>🇵🇭</span>
+      <span>🇵🇳</span>
+      <span>🇵🇱</span>
+      <span>🇵</span>
+      <span>🇹</span>
+      <span>🇵🇷</span>
+      <span>🇶🇦</span>
+      <span>🇷🇪</span>
+      <span>🇷🇴</span>
+      <span>🇷🇺</span>
+      <span>🇷🇼</span>
+      <span>🇧🇱</span>
+      <span>🇸🇭</span>
+      <span>🇰🇳</span>
+      <span>🇱🇨</span>
+      <span>🇵🇲</span>
+      <span>🇻🇨</span>
+      <span>🇼🇸</span>
+      <span>🇸🇲</span>
+      <span>🇸🇹</span>
+      <span>🇸🇦</span>
+      <span>🇸🇳</span>
+      <span>🇷🇸</span>
+      <span>🇸🇨</span>
+      <span>🇸🇱</span>
+      <span>🇸🇬</span>
+      <span>🇸🇽</span>
+      <span>🇸🇰</span>
+      <span>🇸🇮</span>
+      <span>🇸🇧</span>
+      <span>🇸🇴</span>
+      <span>🇿🇦</span>
+      <span>🇬🇸</span>
+      <span>🇰🇷</span>
+      <span>🇸🇸</span>
+      <span>🇪🇸</span>
+      <span>🇱🇰</span>
+      <span>🇸🇩</span>
+      <span>🇸🇷</span>
+      <span>🇸</span>
+      <span>🇿</span>
+      <span>🇸🇪</span>
+      <span>🇨🇭</span>
+      <span>🇸🇾</span>
+      <span>🇹🇼</span>
+      <span>🇹🇯</span>
+      <span>🇹🇿</span>
+      <span>🇹🇭</span>
+      <span>🇹🇱</span>
+      <span>🇹🇬</span>
+      <span>🇹🇰</span>
+      <span>🇹🇴</span>
+      <span>🇹🇹</span>
+      <span>🇹🇳</span>
+      <span>🇹🇷</span>
+      <span>🇹🇲</span>
+      <span>🇹🇨</span>
+      <span>🇹🇻</span>
+      <span>🇺🇬</span>
+      <span>🇺🇦</span>
+      <span>🇦🇪</span>
+      <span>🇬🇧</span>
+      <span>🇺🇸</span>
+      <span>🇻🇮</span>
+      <span>🇺🇾</span>
+      <span>🇺🇿</span>
+      <span>🇻🇺</span>
+      <span>🇻🇦</span>
+      <span>🇻🇪</span>
+      <span>🇻🇳</span>
+      <span>🇼🇫</span>
+      <span>🇪🇭</span>
+      <span>🇾🇪</span>
+      <span>🇿🇲</span>
+      <span>🇿🇼</span>
+    </div>
+  </div>
+  </div>
+</div>
   <div class="do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
-      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" maxlength="50" formControlName="txtArea" style="border-radius:30px !important;height:42px" placeholder='${option('language', 'msg')}'>
+      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" formControlName="txtArea" style="border-radius:30px !important;height:42px" placeholder='${option('language', 'msg')}'>
+      <div id="emoji_div" class="upload-btn-wrapper align-self-center emoji-selector-show-hide">
+         <img id="emoji_img" src="assets/img/smile.svg">
+      </div>
         <div class="upload-btn-wrapper-msg-send align-self-center">
             <button id='BTN_Submit_Comment' #BTN_Submit_Comment  type="button" class="btn pt-0 pb-0 pl-0 pr-1">
                 <img id='IMG_Submit_Comment' #IMG_Submit_Comment src="assets/img/sendmsgbtn.svg" style="width: 40px;
@@ -715,12 +2033,11 @@ ${item.ownStory
                 } else {
                   elements[index].style.display = "none";
                   document.getElementById("open_eye").setAttribute('viewBox', '0 0 24 24')
-                  document.getElementById("open_eye").innerHTML = 
-                  `<path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z" style="fill: #fff;"/>`;
+                  document.getElementById("open_eye").innerHTML =
+                    `<path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z" style="fill: #fff;"/>`;
                 }
               }
-            }
-            else {
+            } else {
               e.preventDefault();
               modal.close();
             }
@@ -844,14 +2161,14 @@ ${item.ownStory
           }
         };
 
-        modalSlider.addEventListener('click', function(e) {
-          if(e.target.className == 'story-right') {
+        modalSlider.addEventListener('click', function (e) {
+          if (e.target.className == 'story-right') {
             zuck.navigateItem('next', event)
           }
-          if(e.target.className == 'story-left') {
-            if(zuck.data[zuck.internalData.currentStory].currentItem == 0) {
+          if (e.target.className == 'story-left') {
+            if (zuck.data[zuck.internalData.currentStory].currentItem == 0) {
               moveStoryItem();
-            }else {
+            } else {
               zuck.navigateItem('previous', event);
               zuck.internalData["currentVideoElement"].currentTime = 0;
             }
@@ -909,7 +2226,7 @@ ${item.ownStory
               nextTimer = false;
 
               const navigateItem = function () {
-                if(event.target.className != 'story-left' && event.target.className != 'story-right'){
+                if (event.target.className != 'story-left' && event.target.className != 'story-right' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
                   if (!direction) {
                     if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
                       if (option('rtl')) {
@@ -1136,7 +2453,7 @@ ${item.ownStory
         });
         const callback = option('callbacks', 'onDataUpdate');
         if (callback) {
-          callback(zuck.data, () => { });
+          callback(zuck.data, () => {});
         }
       }
     };
@@ -1192,7 +2509,7 @@ story.classList.remove('seen');
 
       const callback = option('callbacks', 'onDataUpdate');
       if (callback) {
-        callback(zuck.data, () => { });
+        callback(zuck.data, () => {});
       }
     };
 
@@ -1278,7 +2595,7 @@ story.classList.remove('seen');
       if (video) {
         try {
           video.pause();
-        } catch (e) { }
+        } catch (e) {}
       }
     };
 
@@ -1305,16 +2622,16 @@ story.classList.remove('seen');
           const keyName = `zuck-${id}-${key}`;
           window.localStorage[keyName] = JSON.stringify(data);
         }
-      } catch (e) { }
+      } catch (e) {}
     };
 
     const getLocalData = function (key) {
       if (option('localStorage')) {
         const keyName = `zuck-${id}-${key}`;
 
-        return window.localStorage[keyName]
-          ? JSON.parse(window.localStorage[keyName])
-          : false;
+        return window.localStorage[keyName] ?
+          JSON.parse(window.localStorage[keyName]) :
+          false;
       } else {
         return false;
       }
@@ -1388,7 +2705,7 @@ story.classList.remove('seen');
       story.parentNode.removeChild(story);
     };
 
-     zuck.addItem = (storyId, data, append) => {
+    zuck.addItem = (storyId, data, append) => {
       const story = query(`#${id} > [data-id="${storyId}"]`);
       if (!option('reactive') && story) {
         const li = document.createElement('li');
@@ -1408,7 +2725,7 @@ story.classList.remove('seen');
       if (story) {
         parseItems(story, true, data);
       }
-    };  
+    };
 
     zuck.removeItem = (storyId, itemId) => {
       const item = query(`#${id} > [data-id="${storyId}"] [data-id="${itemId}"]`);
@@ -1419,7 +2736,7 @@ story.classList.remove('seen');
     };
 
     zuck.navigateItem = zuck.nextItem = (direction, event) => {
-      if(event !== undefined){
+      if (event !== undefined) {
         const currentStory = zuck.internalData.currentStory;
         const currentItem = zuck.data[currentStory].currentItem;
         const storyViewer = query(`#zuck-modal .story-viewer[data-story-id="${currentStory}"]`);
