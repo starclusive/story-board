@@ -89,13 +89,14 @@ input {
 .chat-panel {
   position: relative;
   display: inline-block;
-  background-color: #EEEEEE;
+  background-color: transparent !important;
   margin: 20px;
-  font-size: 0;
+  font-size: 16px !important;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
 }
+
 
 .chat-panel .emoji-header {
   background-color: #FFFFFF;
@@ -242,4 +243,8 @@ img.emoji {
 
 .menu-tabs > .menu-item {
   text-align: center;
+}
+
+.emoji-panel{
+  white-space: normal;
 }
