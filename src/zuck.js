@@ -414,9 +414,14 @@ ${item.viewersDetails.length > 0
 </div>` : ''}
 ${item.ownStory
   ? ' ':`
-  <div class="col-lg-8 col-md-8 col-8 tip link">
+  <div class="col-lg-8 col-md-8 col-10 tip link">
   <div class="container">
-  <div class="chat-panel" style="display:none">
+  <div class="chat-panel" style="display:none;width: 250px;position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: #fff;
+  font-size:16px !important;
+  border-radius:6px">
     <div class="emoji-header menu-tabs hor-flex-parent">
       <span class="menu-item flex-kid" data-react="smileys-and-people">😀</span>
       <span class="menu-item flex-kid" data-react="animals-and-nature">🐶</span>
@@ -424,7 +429,7 @@ ${item.ownStory
       <span class="menu-item flex-kid" data-react="activity">⚽</span>
       <span class="menu-item flex-kid" data-react="travel-and-places">🚗</span>
       <span class="menu-item flex-kid" data-react="objects">⌚</span>
-      <span class="menu-item flex-kid" data-react="symbols">❤</span>
+      <span class="menu-item flex-kid" data-react="symbols">💛</span>
       <span class="menu-item flex-kid" data-react="flags">🇳🇱</span>
     </div>
     <div class="emoji-panel">
