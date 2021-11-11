@@ -447,7 +447,6 @@ ${item.ownStory
       <span>😊</span>
       <span>🙂</span>
       <span>🙃</span>
-      <span>☺</span>
       <span>😋</span>
       <span>😌</span>
       <span>😍</span>
@@ -477,7 +476,6 @@ ${item.ownStory
       <span>😔</span>
       <span>😕</span>
       <span>🙁</span>
-      <span>☹</span>
       <span>😣</span>
       <span>😖</span>
       <span>😫</span>
@@ -528,13 +526,11 @@ ${item.ownStory
       <span>👎</span>
       <span>👊</span>
       <span>✊</span>
-      <span>✌</span>
       <span>👌</span>
       <span>✋</span>
       <span>👐</span>
       <span>💪</span>
       <span>🙏</span>
-      <span>☝</span>
       <span>👆</span>
       <span>👇</span>
       <span>👈</span>
@@ -543,7 +539,6 @@ ${item.ownStory
       <span>🖐</span>
       <span>🤘</span>
       <span>🖖</span>
-      <span>✍️</span>
       <span>💅</span>
       <span>👄</span>
       <span>👅</span>
@@ -720,7 +715,6 @@ ${item.ownStory
       <span>🌴</span>
       <span>🌱</span>
       <span>🌿</span>
-      <span>☘</span>
       <span>🍀</span>
       <span>🎍</span>
       <span>🎋</span>
@@ -761,29 +755,21 @@ ${item.ownStory
       <span>🌟</span>
       <span>💫</span>
       <span>✨</span>
-      <span>☄</span>
-      <span>☀</span>
       <span>🌤</span>
       <span>⛅</span>
       <span>🌥</span>
       <span>🌦</span>
-      <span>☁</span>
       <span>🌧</span>
       <span>⛈</span>
       <span>🌩</span>
-      <span>⚡</span>
       <span>🔥</span>
       <span>💥</span>
-      <span>❄</span>
       <span>🌨</span>
-      <span>☃</span>
       <span>⛄</span>
       <span>🌬</span>
       <span>💨</span>
       <span>🌪</span>
       <span>🌫</span>
-      <span>☂</span>
-      <span>☔</span>
       <span>💧</span>
       <span>💦</span>
       <span>🌊</span>
@@ -852,7 +838,6 @@ ${item.ownStory
       <span>🍾</span>
       <span>🍶</span>
       <span>🍵</span>
-      <span>☕</span>
       <span>🍼</span>
       <span>🍴</span>
       <span>🍽</span>
@@ -954,7 +939,6 @@ ${item.ownStory
       <span>🚉</span>
       <span>🚁</span>
       <span>🛩</span>
-      <span>✈</span>
       <span>🛫</span>
       <span>🛬</span>
       <span>⛵</span>
@@ -965,7 +949,6 @@ ${item.ownStory
       <span>🚀</span>
       <span>🛰</span>
       <span>💺</span>
-      <span>⚓</span>
       <span>🚧</span>
       <span>⛽</span>
       <span>🚏</span>
@@ -1038,7 +1021,6 @@ ${item.ownStory
       <span>📱</span>
       <span>📲</span>
       <span>💻</span>
-      <span>⌨</span>
       <span>🖥</span>
       <span>🖨</span>
       <span>🖱</span>
@@ -1057,7 +1039,6 @@ ${item.ownStory
       <span>📽</span>
       <span>🎞</span>
       <span>📞</span>
-      <span>☎</span>
       <span>📟</span>
       <span>📠</span>
       <span>📺</span>
@@ -1087,30 +1068,22 @@ ${item.ownStory
       <span>💰</span>
       <span>💳</span>
       <span>💎</span>
-      <span>⚖</span>
       <span>🔧</span>
       <span>🔨</span>
-      <span>⚒</span>
       <span>🛠</span>
       <span>⛏</span>
       <span>🔩</span>
-      <span>⚙</span>
       <span>⛓</span>
       <span>🔫</span>
       <span>💣</span>
       <span>🔪</span>
       <span>🗡</span>
-      <span>⚔</span>
       <span>🛡</span>
       <span>🚬</span>
-      <span>☠</span>
-      <span>⚰</span>
-      <span>⚱</span>
       <span>🏺</span>
       <span>🔮</span>
       <span>📿</span>
       <span>💈</span>
-      <span>⚗</span>
       <span>🔭</span>
       <span>🔬</span>
       <span>🕳</span>
@@ -1191,7 +1164,6 @@ ${item.ownStory
       <span>🔗</span>
       <span>📎</span>
       <span>🖇</span>
-      <span>✂</span>
       <span>📐</span>
       <span>📏</span>
       <span>📌</span>
@@ -1205,22 +1177,18 @@ ${item.ownStory
       <span>🔏</span>
       <span>🖊</span>
       <span>🖋</span>
-      <span>✒</span>
       <span>📝</span>
-      <span>✏</span>
       <span>🖍</span>
       <span>🖌</span>
       <span>🔍</span>
       <span>🔎</span>
     </div>
     <div data-react="symbols" style="display:none" class="emoji-panel-tab-symbols">
-      <span>❤</span>
       <span>💛</span>
       <span>💚</span>
       <span>💙</span>
       <span>💜</span>
       <span>💔</span>
-      <span>❣</span>
       <span>💕</span>
       <span>💞</span>
       <span>💓</span>
@@ -1229,58 +1197,29 @@ ${item.ownStory
       <span>💘</span>
       <span>💝</span>
       <span>💟</span>
-      <span>☮</span>
-      <span>✝</span>
-      <span>☪</span>
       <span>🕉</span>
-      <span>☸</span>
-      <span>✡</span>
       <span>🔯</span>
       <span>🕎</span>
-      <span>☯</span>
-      <span>☦</span>
       <span>🛐</span>
       <span>⛎</span>
-      <span>♈</span>
-      <span>♉</span>
-      <span>♊</span>
-      <span>♋</span>
-      <span>♌</span>
-      <span>♍</span>
-      <span>♎</span>
-      <span>♏</span>
-      <span>♐</span>
-      <span>♑</span>
-      <span>♒</span>
-      <span>♓</span>
       <span>🆔</span>
-      <span>⚛</span>
       <span>🈳</span>
       <span>🈹</span>
-      <span>☢</span>
-      <span>☣</span>
       <span>📴</span>
       <span>📳</span>
       <span>🈶</span>
       <span>🈚</span>
       <span>🈸</span>
       <span>🈺</span>
-      <span>🈷</span>
-      <span>✴</span>
       <span>🆚</span>
       <span>🉑</span>
       <span>💮</span>
       <span>🉐</span>
-      <span>㊙</span>
-      <span>㊗</span>
       <span>🈴</span>
       <span>🈵</span>
       <span>🈲</span>
-      <span>🅰</span>
-      <span>🅱</span>
       <span>🆎</span>
       <span>🆑</span>
-      <span>🅾</span>
       <span>🆘</span>
       <span>⛔</span>
       <span>📛</span>
@@ -1288,7 +1227,6 @@ ${item.ownStory
       <span>❌</span>
       <span>⭕</span>
       <span>💢</span>
-      <span>♨</span>
       <span>🚷</span>
       <span>🚯</span>
       <span>🚳</span>
@@ -1299,38 +1237,27 @@ ${item.ownStory
       <span>❕</span>
       <span>❓</span>
       <span>❔</span>
-      ‼<span>⁉</span>
       <span>💯</span>
       <span>🔅</span>
       <span>🔆</span>
       <span>🔱</span>
-      <span>⚜</span>
-      <span>〽</span>
-      <span>⚠</span>
       <span>🚸</span>
       <span>🔰</span>
-      <span>♻</span>
       <span>🈯</span>
       <span>💹</span>
-      <span>❇</span>
-      <span>✳</span>
       <span>❎</span>
       <span>✅</span>
       <span>💠</span>
       <span>🌀</span>
       <span>➿</span>
       <span>🌐</span>
-      <span>Ⓜ</span>
       <span>🏧</span>
-      <span>🈂</span>
       <span>🛂</span>
       <span>🛃</span>
       <span>🛄</span>
       <span>🛅</span>
-      <span>♿</span>
       <span>🚭</span>
       <span>🚾</span>
-      <span>🅿</span>
       <span>🚰</span>
       <span>🚹</span>
       <span>🚺</span>
@@ -1346,19 +1273,8 @@ ${item.ownStory
       <span>🆒</span>
       <span>🆕</span>
       <span>🆓</span>
-      <span>0⃣</span>
-      <span>1⃣</span>
-      <span>2⃣</span>
-      <span>3⃣</span>
-      <span>4⃣</span>
-      <span>5⃣</span>
-      <span>6⃣</span>
-      <span>7⃣</span>
-      <span>8⃣</span>
-      <span>9⃣</span>
       <span>🔟</span>
       <span>🔢</span>
-      <span>▶</span>
       <span>⏸</span>
       <span>⏯</span>
       <span>⏹</span>
@@ -1370,43 +1286,21 @@ ${item.ownStory
       <span>🔀</span>
       <span>🔁</span>
       <span>🔂</span>
-      <span>◀</span>
       <span>🔼</span>
       <span>🔽</span>
       <span>⏫</span>
       <span>⏬</span>
-      <span>➡</span>
-      <span>⬅</span>
-      <span>⬆</span>
-      <span>⬇</span>
-      <span>↗</span>
-      <span>↘</span>
-      <span>↙</span>
-      <span>↖</span>
-      <span>↕</span>
-      <span>↔</span>
-      <span>🔄</span>
-      <span>↪</span>
-      <span>↩</span>
-      <span>⤴</span>
-      <span>⤵</span>
-      <span>#⃣</span>
-      <span>*⃣</span>
-      <span>ℹ</span>
       <span>🔤</span>
       <span>🔡</span>
       <span>🔠</span>
       <span>🔣</span>
       <span>🎵</span>
       <span>🎶</span>
-      <span>〰</span>
       <span>➰</span>
-      <span>✔</span>
       <span>🔃</span>
       <span>➕</span>
       <span>➖</span>
       <span>➗</span>
-      <span>✖</span>
       <span>💲</span>
       <span>💱</span>
       <span>🔚</span>
@@ -1414,26 +1308,17 @@ ${item.ownStory
       <span>🔛</span>
       <span>🔝</span>
       <span>🔜</span>
-      <span>☑</span>
       <span>🔘</span>
       <span>⚪</span>
       <span>⚫</span>
       <span>🔴</span>
       <span>🔵</span>
-      <span>🔸</span>
-      <span>🔹</span>
       <span>🔶</span>
       <span>🔷</span>
       <span>🔺</span>
-      <span>▪</span>
-      <span>▫</span>
       <span>⬛</span>
       <span>⬜</span>
       <span>🔻</span>
-      <span>◼</span>
-      <span>◻</span>
-      <span>◾</span>
-      <span>◽</span>
       <span>🔲</span>
       <span>🔳</span>
       <span>🔈</span>
@@ -1446,10 +1331,6 @@ ${item.ownStory
       <span>🔕</span>
       <span>🃏</span>
       <span>🀄</span>
-      <span>♠</span>
-      <span>♣</span>
-      <span>♥</span>
-      <span>♦</span>
       <span>🎴</span>
       <span>🗨</span>
       <span>💭</span>
