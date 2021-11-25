@@ -388,14 +388,12 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
           return `<div 
 class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
-${get(item, 'type') === 'video'
-? `<div class="story-left"  title="Previous Story">
+<div class="story-left"  title="Previous Story">
 <svg xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
               height: 30px;&#10;    width: 30px;&#10;"><g transform="translate(0 0)">
               <path style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
               1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
-              </g></svg></div>`
-: ``}
+              </g></svg></div>
 ${get(item, 'type') === 'video'
               ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>
 <b class="tip muted mutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;" id="videoMute">${option('language', 'unmute')}</b>
@@ -1630,14 +1628,12 @@ ${item.ownStory
         </div>
     </div>
   </div>`}
-  ${get(item, 'type') === 'video'
-              ? `<div class="story-right"  title="Next Story">
+<div class="story-right"  title="Next Story">
               <svg xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
               height: 30px;&#10;    width: 30px;&#10;"><g transform="translate(0 0)">
               <path style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
               1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
-              </g></svg></div>`
-              : ``}
+              </g></svg></div>
 </div>`;
         }
       },
