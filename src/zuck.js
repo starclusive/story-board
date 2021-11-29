@@ -388,10 +388,10 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
           return `<div 
 class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
-<div class="story-left"  title="Previous Story">
-<svg xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
-              height: 30px;&#10;    width: 30px;&#10;"><g transform="translate(0 0)">
-              <path style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
+<div id="story-left"  class="story-left" title="Previous Story">
+<svg id="story-left1" class="story-left1" xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
+              height: 30px;&#10;    width: 30px;&#10;"><g class="story-left2" id="story-left2" transform="translate(0 0)">
+              <path class="story-left3" id="story-left3" style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
               1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
               </g></svg></div>
 ${get(item, 'type') === 'video'
@@ -1628,10 +1628,10 @@ ${item.ownStory
         </div>
     </div>
   </div>`}
-<div class="story-right"  title="Next Story">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
-              height: 30px;&#10;    width: 30px;&#10;"><g transform="translate(0 0)">
-              <path style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
+<div class="story-right" id="story-right"  title="Next Story">
+              <svg id="story-right1" class="story-right1" xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
+              height: 30px;&#10;    width: 30px;&#10;"><g class="story-right2" id="story-right2" transform="translate(0 0)">
+              <path class="story-right3" id="story-right3" style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
               1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
               </g></svg></div>
 </div>`;
@@ -2044,10 +2044,10 @@ ${item.ownStory
         };
 
         modalSlider.addEventListener('click', function (e) {
-          if (e.target.className == 'story-right') {
+          if (e.target.className == 'story-right' || e.target.className == 'story-right1' || e.target.className == 'story-right2' || e.target.className == 'story-right3') {
             zuck.navigateItem('next', event)
           }
-          if (e.target.className == 'story-left') {
+          if (e.target.className == 'story-left' || e.target.className == 'story-left1' || e.target.className == 'story-left2' || e.target.className == 'story-left3') {
             if (zuck.data[zuck.internalData.currentStory].currentItem == 0) {
               moveStoryItem();
             } else {
@@ -2108,7 +2108,7 @@ ${item.ownStory
               nextTimer = false;
 
               const navigateItem = function () {
-                if (event.target.className != 'story-left' && event.target.className != 'story-right' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
+                if (event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.className != 'story-left' && event.target.className != 'story-right' && event.target.className != 'story-left1' && event.target.className != 'story-right1' && event.target.className != 'story-left2' && event.target.className != 'story-right2' && event.target.className != 'story-left3' && event.target.className != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
                   if (!direction) {
                     if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
                       if (option('rtl')) {
