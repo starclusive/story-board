@@ -347,7 +347,6 @@ module.exports = (window => {
         },
 
         viewerItem(storyData, currentStoryItem) {
-          debugger
           return `<div class="story-viewer">
                   <div class="head">
                       <div class="left"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview">
@@ -386,7 +385,6 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
         },
 
         viewerItemBody(index, currentIndex, item) {
-          console.log("item",item);
           return `<div 
 class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
