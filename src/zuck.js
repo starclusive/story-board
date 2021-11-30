@@ -395,11 +395,20 @@ data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${
               1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
               </g></svg></div>
 ${get(item, 'type') === 'video'
-              ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>
-<b class="tip muted mutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;" id="videoMute">${option('language', 'unmute')}</b>
-<b class="tip muted unmutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;display:none;" id="videoUNMute">${option('language', 'mute')}</b>`
+              ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>`
               : `<img loading="auto" class="media" src="${get(item, 'src')}" ${get(item, 'type')} />
 `}
+${get(item, 'type') === 'video'
+? `<div style="position: absolute;
+top: calc(100vh - 100px);
+margin: 0 auto 10px;
+left: 0;
+right: 0;"><b class="tip muted mutedVideo" style="line-height: normal;
+padding: 10px 15px !important;display:block !important;" id="videoMute">${option('language', 'unmute')}</b>
+    <b class="tip muted unmutedVideo" style="line-height: normal;
+    padding: 10px 15px !important;display:none !important;" id="videoUNMute">${option('language', 'mute')}</b>
+    </div>`
+: ``}
 ${item.ownStory
               ? `<div class="s-v-block" style="display:none">
 <label class="v-label" id="ViewStoryCount">
@@ -1616,14 +1625,13 @@ ${item.ownStory
 </div>
   <div class="do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
       <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" formControlName="txtArea" style="border-radius:30px !important;height:42px" placeholder='${option('language', 'msg')}'>
-      <div id="emoji_div" class="upload-btn-wrapper align-self-center emoji-selector-show-hide">
-         <img id="emoji_img" src="assets/img/smile.svg">
+      <div id="emoji_div" class="upload-btn-wrapper align-self-center emoji-selector-show-hide" style="margin:0 10px;">
+         <img id="emoji_img" src="assets/img/smile.svg" style="margin-left:0">
       </div>
         <div class="upload-btn-wrapper-msg-send align-self-center">
             <button id='BTN_Submit_Comment' #BTN_Submit_Comment  type="button" class="btn pt-0 pb-0 pl-0 pr-1">
                 <img id='IMG_Submit_Comment' #IMG_Submit_Comment src="assets/img/sendmsgbtn.svg" style="width: 40px;
-                height: 40px;
-                margin-left: 5px;">
+                height: 40px;">
             </button>
         </div>
     </div>
