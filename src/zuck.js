@@ -2133,6 +2133,19 @@ ${item.ownStory
                     }
                   }
                 }
+                if (window.innerWidth <= 1300 && window.innerHeight <= 1400) {
+                  if (event.target.className == 'story-right' || event.target.className == 'story-right1' || event.target.className == 'story-right2' || event.target.className == 'story-right3') {
+                    zuck.navigateItem('next', event)
+                  }
+                  if (event.target.className == 'story-left' || event.target.className == 'story-left1' || event.target.className == 'story-left2' || event.target.className == 'story-left3') {
+                    if (zuck.data[zuck.internalData.currentStory].currentItem == 0) {
+                      moveStoryItem();
+                    } else {
+                      zuck.navigateItem('previous', event);
+                      zuck.internalData["currentVideoElement"].currentTime = 0;
+                    }
+                  }
+                }
               };
 
               const storyViewerViewing = query('#zuck-modal .viewing');
@@ -2431,7 +2444,9 @@ story.classList.remove('seen');
         if (!option('reactive')) {
           timeline.removeChild(el);
         }
-        zuck.update(newData, true);
+        if(newData){
+          zuck.update(newData, true);
+        }
       });
     };
 
@@ -2445,7 +2460,9 @@ story.classList.remove('seen');
 
       const cur = zuck.internalData.currentVideoElement;
       if (cur) {
-        cur.pause();
+        if(!cur.paused){
+          cur.pause();
+        }
       }
 
       if (itemElement.getAttribute('data-type') === 'video') {
@@ -2484,7 +2501,11 @@ story.classList.remove('seen');
       const video = zuck.internalData.currentVideoElement;
       if (video) {
         try {
-          video.pause();
+          if(!video.paused){
+            if (event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.className != 'story-left' && event.target.className != 'story-right' && event.target.className != 'story-left1' && event.target.className != 'story-right1' && event.target.className != 'story-left2' && event.target.className != 'story-right2' && event.target.className != 'story-left3' && event.target.className != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
+            video.pause();
+            }
+          }
         } catch (e) {}
       }
     };
@@ -2533,55 +2554,56 @@ story.classList.remove('seen');
     zuck.internalData.seenItems = getLocalData('seenItems') || {};
 
     zuck.add = zuck.update = (data, append) => {
-      const storyId = get(data, 'id');
-      const storyEl = query(`#${id} [data-id="${storyId}"]`);
-      const items = get(data, 'items');
-      let story;
-      let preview = false;
-
-      if (items[items.length - 1]) {
-        preview = items[items.length - 1].preview || '';
-      }
-
-      if (zuck.internalData.seenItems[storyId] === true) {
-        data.seen = true;
-      }
-
-      data.currentPreview = preview;
-
-      if (!storyEl) {
-        const storyItem = document.createElement('div');
-        storyItem.innerHTML = option('template', 'timelineItem')(data);
-
-        story = storyItem.firstElementChild;
-      } else {
-        story = storyEl;
-      }
-      if (data.seen === false) {
-        zuck.internalData.seenItems[storyId] = false;
-        saveLocalData('seenItems', zuck.internalData.seenItems);
-      }
-
-      story.setAttribute('data-id', storyId);
-      story.setAttribute('data-photo', get(data, 'photo'));
-      story.setAttribute('data-last-updated', get(data, 'lastUpdated'));
-      story.setAttribute('data-own-story', get(data, 'ownStory'));
-
-      parseStory(story);
-
-      if (!storyEl && !option('reactive')) {
-        if (append) {
-          timeline.appendChild(story);
-        } else {
-          prepend(timeline, story);
+      if(data){
+        const storyId = get(data, 'id');
+        const storyEl = query(`#${id} [data-id="${storyId}"]`);
+        const items = get(data, 'items');
+        let story;
+        let preview = false;
+  
+        if (items[items.length - 1]) {
+          preview = items[items.length - 1].preview || '';
         }
-      }
-
-      each(items, (i, item) => {
-        zuck.addItem(storyId, item, append);
-      });
-      if (!append) {
-        updateStorySeenPosition();
+  
+        if (zuck.internalData.seenItems[storyId] === true) {
+          data.seen = true;
+        }
+        data.currentPreview = preview;
+  
+        if (!storyEl) {
+          const storyItem = document.createElement('div');
+          storyItem.innerHTML = option('template', 'timelineItem')(data);
+  
+          story = storyItem.firstElementChild;
+        } else {
+          story = storyEl;
+        }
+        if (data.seen === false) {
+          zuck.internalData.seenItems[storyId] = false;
+          saveLocalData('seenItems', zuck.internalData.seenItems);
+        }
+  
+        story.setAttribute('data-id', storyId);
+        story.setAttribute('data-photo', get(data, 'photo'));
+        story.setAttribute('data-last-updated', get(data, 'lastUpdated'));
+        story.setAttribute('data-own-story', get(data, 'ownStory'));
+  
+        parseStory(story);
+  
+        if (!storyEl && !option('reactive')) {
+          if (append) {
+            timeline.appendChild(story);
+          } else {
+            prepend(timeline, story);
+          }
+        }
+  
+        each(items, (i, item) => {
+          zuck.addItem(storyId, item, append);
+        });
+        if (!append) {
+          updateStorySeenPosition();
+        }
       }
     };
 
