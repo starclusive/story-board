@@ -1623,8 +1623,9 @@ ${item.ownStory
   </div>
   </div>
 </div>
-  <div class="do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
-      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" formControlName="txtArea" style="border-radius:30px !important;height:42px" placeholder='${option('language', 'msg')}'>
+  <div class="stories-chat-item-replied-textarea do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
+      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" formControlName="txtArea" 
+      data-item-id="${get(item, 'id')}" style="border-radius:30px !important;height:42px" placeholder='${option('language', 'msg')}'>
       <div id="emoji_div" class="upload-btn-wrapper align-self-center emoji-selector-show-hide" style="margin:0 10px;">
          <img id="emoji_img" src="assets/img/smile.svg" style="margin-left:0">
       </div>
