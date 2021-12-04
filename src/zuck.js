@@ -399,11 +399,7 @@ ${get(item, 'type') === 'video'
               : `<img loading="auto" class="media" src="${get(item, 'src')}" ${get(item, 'type')} />
 `}
 ${get(item, 'type') === 'video'
-? `<div style="position: absolute;
-top: calc(100vh - 100px);
-margin: 0 auto 10px;
-left: 0;
-right: 0;"><b class="tip muted mutedVideo" style="line-height: normal;
+? `<div class="m-u-btn-group"><b class="tip muted mutedVideo" style="line-height: normal;
 padding: 10px 15px !important;display:block !important;" id="videoMute">${option('language', 'unmute')}</b>
     <b class="tip muted unmutedVideo" style="line-height: normal;
     padding: 10px 15px !important;display:none !important;" id="videoUNMute">${option('language', 'mute')}</b>
