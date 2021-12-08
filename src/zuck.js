@@ -2148,7 +2148,7 @@ ${item.ownStory
               const storyViewerViewing = query('#zuck-modal .viewing');
 
               if (storyViewerViewing && video) {
-                if (storyViewerViewing.classList.contains('muted')) {
+                if (storyViewerViewing.classList.contains('muted') && event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.id != 'story-left' && event.target.id != 'story-right' && event.target.id != 'story-left1' && event.target.id != 'story-right1' && event.target.id != 'story-left2' && event.target.id != 'story-right2' && event.target.id != 'story-left3' && event.target.id != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
                   unmuteVideoItem(video, storyViewerViewing);
                 } else {
                   navigateItem();
