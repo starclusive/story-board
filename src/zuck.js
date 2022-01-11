@@ -1634,7 +1634,6 @@ ${item.ownStory
 
           video.onload = video.onplaying = video.oncanplay = () => {
             addMuted(video);
-
             storyViewer.classList.remove('loading');
           };
 
@@ -1896,7 +1895,7 @@ ${item.ownStory
 
               if (storyViewerViewing && video) {
                 if (storyViewerViewing.classList.contains('muted') && event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.id != 'story-left' && event.target.id != 'story-right' && event.target.id != 'story-left1' && event.target.id != 'story-right1' && event.target.id != 'story-left2' && event.target.id != 'story-right2' && event.target.id != 'story-left3' && event.target.id != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
-                  unmuteVideoItem(video, storyViewerViewing);
+
                 } else {
                   navigateItem();
                 }
@@ -2234,7 +2233,6 @@ story.classList.remove('seen');
         video.play();
 
         if (unmute && unmute.target) {
-          unmuteVideoItem(video, storyViewer);
         }
       } else {
         zuck.internalData.currentVideoElement = false;
@@ -2392,7 +2390,7 @@ story.classList.remove('seen');
     };
 
     zuck.navigateItem = zuck.nextItem = (direction, event) => {
-      if (event !== undefined) {
+      // if (event !== undefined) {
         const currentStory = zuck.internalData.currentStory;
         const currentItem = zuck.data[currentStory].currentItem;
         const storyViewer = query(`#zuck-modal .story-viewer[data-story-id="${currentStory}"]`);
@@ -2447,7 +2445,7 @@ story.classList.remove('seen');
             modal.next(event);
           }
         }
-      }
+      // }
     };
 
     zuck.sendViewItemUpdate = function () {
