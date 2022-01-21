@@ -332,7 +332,7 @@ module.exports = (window => {
                     data-linkText="${get(itemData, 'linkText')}",
                     data-time="${get(itemData, 'time')}"
                     data-type="${get(itemData, 'type')}"
-                    data-length="${get(itemData, 'length')}
+                    data-length="${get(itemData, 'length')}"
                     data-seen="${get(itemData, 'seen')}"
                     `;
           for (const dataKey in itemData) {
@@ -1644,7 +1644,6 @@ ${item.ownStory
 
         const storyViewerWrap = document.createElement('div');
         storyViewerWrap.innerHTML = option('template', 'viewerItem')(storyData, currentItem);
-
         const storyViewer = storyViewerWrap.firstElementChild;
 
         storyViewer.className = `story-viewer muted ${className} ${!forcePlay ? 'stopped' : ''} ${option('backButton') ? 'with-back-button' : ''}`;
@@ -2013,7 +2012,6 @@ ${item.ownStory
               zuck.internalData.seenItems[lastStory] = true;
 
               saveLocalData('seenItems', zuck.internalData.seenItems);
-              updateStorySeenPosition();
             }
 
             const stories = query('#zuck-modal .story-viewer.next');
@@ -2161,17 +2159,15 @@ story.classList.remove('seen');
 
     // BIBLICAL
     const getStoryMorningGlory = function (what) {
-      // my wife told me to stop singing Wonderwall. I SAID MAYBE.
 
       const currentStory = zuck.internalData.currentStory;
       const whatElementYouMean = `${what}ElementSibling`;
-      if (currentStory) {
+      const data_stories = query(`#${id} [data-id="${currentStory}"]`)
+      if (currentStory && data_stories) {
         const foundStory = query(`#${id} [data-id="${currentStory}"]`)[whatElementYouMean];
-
         if (foundStory) {
           const storyId = foundStory.getAttribute('data-id');
           const data = zuck.data[storyId] || false;
-
           return data;
         }
       }
@@ -2183,7 +2179,6 @@ story.classList.remove('seen');
       each(document.querySelectorAll(`#${id} .story.seen`), (i, el) => {
         const newData = zuck.data[el.getAttribute('data-id')];
         const timeline = el.parentNode;
-
         if (!option('reactive')) {
           timeline.removeChild(el);
         }
@@ -2390,7 +2385,6 @@ story.classList.remove('seen');
     };
 
     zuck.navigateItem = zuck.nextItem = (direction, event) => {
-      // if (event !== undefined) {
         const currentStory = zuck.internalData.currentStory;
         const currentItem = zuck.data[currentStory].currentItem;
         const storyViewer = query(`#zuck-modal .story-viewer[data-story-id="${currentStory}"]`);
@@ -2445,7 +2439,6 @@ story.classList.remove('seen');
             modal.next(event);
           }
         }
-      // }
     };
 
     zuck.sendViewItemUpdate = function () {
@@ -2495,7 +2488,6 @@ story.classList.remove('seen');
       each(option('stories'), (itemKey, item) => {
         zuck.add(item, true);
       });
-
       updateStorySeenPosition();
 
       const avatars = option('avatars') ? 'user-icon' : 'story-preview';
