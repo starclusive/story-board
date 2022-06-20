@@ -1672,6 +1672,9 @@ ${item.ownStory
             } else {
               e.preventDefault();
               modal.close();
+              if(el.className === "close"){
+                window.location.reload();
+              }
             }
           };
         });
@@ -2460,15 +2463,12 @@ story.classList.remove('seen');
       }
 
       if (option('backNative')) {
-        if (window.location.hash === `#!${id}`) {
-          window.location.hash = '';
-        }
-
         window.addEventListener(
           'popstate',
           e => {
-            if (window.location.hash !== `#!${id}`) {
+            if (window.location.hash === '') {
               window.location.hash = '';
+              window.location.reload();
             }
           },
           false
