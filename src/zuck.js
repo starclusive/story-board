@@ -349,13 +349,13 @@ module.exports = (window => {
         viewerItem(storyData, currentStoryItem) {
           return `<div class="story-viewer">
                   <div class="head">
-                      <div class="left"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview">
-                  <img lazy="eager" class="profilePhoto" src="${get(storyData, 'photo')}" />
+                      <div class="left profile_routing"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview profile_routing">
+                  <img lazy="eager" class="profilePhoto profile_routing" src="${get(storyData, 'photo')}" />
                 </span>
-                          <div class="info"> <strong class="name">${get(storyData, 'name')}</strong> <span class="time">${get(storyData, 'timeAgo')}</span> </div>
+                          <div class="info profile_routing"> <strong class="name profile_routing">${get(storyData, 'name')}</strong> <span class="time profile_routing">${get(storyData, 'timeAgo')}</span> </div>
                       </div>
                       
-                      <div class="right"> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
+                      <div class="right "> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
                           <a class="close" tabIndex="2"> <img src="assets/img/Layer 3.svg" style="height:30px;width:30px"> </a>
                       </div>
                       ${storyData.ownStory?`<div class="right"> 
