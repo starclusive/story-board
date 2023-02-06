@@ -349,10 +349,10 @@ module.exports = (window => {
         viewerItem(storyData, currentStoryItem) {
           return `<div class="story-viewer">
                   <div class="head">
-                      <div class="left profile_routing"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview profile_routing">
-                  <img lazy="eager" class="profilePhoto profile_routing" src="${get(storyData, 'photo')}" />
+                      <div class="left profile_routing" style="cursor: pointer;" > ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview profile_routing" style="cursor: pointer;" >
+                  <img lazy="eager" class="profilePhoto profile_routing" style="cursor: pointer;"  src="${get(storyData, 'photo')}" />
                 </span>
-                          <div class="info profile_routing"> <strong class="name profile_routing">${get(storyData, 'name')}</strong> <span class="time profile_routing">${get(storyData, 'timeAgo')}</span> </div>
+                          <div class="info profile_routing" style="cursor: pointer;" > <strong class="name profile_routing" style="cursor: pointer;" >${get(storyData, 'name')}</strong> <span class="time profile_routing" style="cursor: pointer;" >${get(storyData, 'timeAgo')}</span> </div>
                       </div>
                       
                       <div class="right "> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
