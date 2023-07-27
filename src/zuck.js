@@ -129,13 +129,13 @@ module.exports = (window => {
           ) {
             if (document.exitFullscreen) {
               document.exitFullscreen()
-                .catch(() => { });
+                .catch(() => {});
             } else if (document.mozCancelFullScreen) {
               document.mozCancelFullScreen()
-                .catch(() => { });
+                .catch(() => {});
             } else if (document.mozCancelFullScreen) {
               document.mozCancelFullScreen()
-                .catch(() => { });
+                .catch(() => {});
             }
           }
         } else {
@@ -287,7 +287,7 @@ module.exports = (window => {
         onOpen: function (storyId, callback) {
           callback();
         },
-        onView: function (storyId) { },
+        onView: function (storyId) {},
         onEnd: function (storyId, callback) {
           callback();
         },
@@ -332,7 +332,7 @@ module.exports = (window => {
                     data-linkText="${get(itemData, 'linkText')}",
                     data-time="${get(itemData, 'time')}"
                     data-type="${get(itemData, 'type')}"
-                    data-length="${get(itemData, 'length')}
+                    data-length="${get(itemData, 'length')}"
                     data-seen="${get(itemData, 'seen')}"
                     `;
           for (const dataKey in itemData) {
@@ -349,13 +349,13 @@ module.exports = (window => {
         viewerItem(storyData, currentStoryItem) {
           return `<div class="story-viewer">
                   <div class="head">
-                      <div class="left"> ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview">
-                  <img lazy="eager" class="profilePhoto" src="${get(storyData, 'photo')}" />
+                      <div class="left profile_routing" style="cursor: pointer;" > ${option('backButton') ? '<a class="back">&lsaquo;</a>' : ''} <span class="item-preview profile_routing" style="cursor: pointer;" >
+                  <img lazy="eager" class="profilePhoto profile_routing" style="cursor: pointer;"  src="${get(storyData, 'photo')}" />
                 </span>
-                          <div class="info"> <strong class="name">${get(storyData, 'name')}</strong> <span class="time">${get(storyData, 'timeAgo')}</span> </div>
+                          <div class="info profile_routing" style="cursor: pointer;" > <strong class="name profile_routing" style="cursor: pointer;" >${get(storyData, 'name')}</strong> <span class="time profile_routing" style="cursor: pointer;" >${get(storyData, 'timeAgo')}</span> </div>
                       </div>
                       
-                      <div class="right"> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
+                      <div class="right "> <span class="time">${get(currentStoryItem, 'timeAgo')}</span> <span class="loading"></span>
                           <a class="close" tabIndex="2"> <img src="assets/img/Layer 3.svg" style="height:30px;width:30px"> </a>
                       </div>
                       ${storyData.ownStory?`<div class="right"> 
@@ -388,15 +388,23 @@ data-index="${index}" data-item-id="${get(item, 'id')}">
           return `<div 
 class="item ${(get(item, 'seen')) || get(item, 'isStorySeen') === true ? 'seen' : 'notSeenStory'} ${currentIndex === index ? 'active' : ''}"
 data-time="${get(item, 'time')}" data-type="${get(item, 'type')}" data-index="${index}" data-item-id="${get(item, 'id')}">
+<div id="story-left"  class="story-left" title="Previous Story">
+<svg id="story-left1" class="story-left1" xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
+              height: 30px;&#10;    width: 30px;&#10;"><g class="story-left2" id="story-left2" transform="translate(0 0)">
+              <path class="story-left3" id="story-left3" style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
+              1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
+              </g></svg></div>
 ${get(item, 'type') === 'video'
-? `<div class="story-left"  title="Previous Story">&#8592;</div>`
-: ``}
-${get(item, 'type') === 'video'
-              ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>
-<b class="tip muted mutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;" id="videoMute">${option('language', 'unmute')}</b>
-<b class="tip muted unmutedVideo" style="bottom: 100px;margin-bottom:10px;padding: 10px 15px !important;display:none;" id="videoUNMute">${option('language', 'mute')}</b>`
+              ? `<video id="videoTag" class="media videoActive" muted webkit-playsinline playsinline preload="auto" src="${get(item, 'src')}" ${get(item, 'type')}></video>`
               : `<img loading="auto" class="media" src="${get(item, 'src')}" ${get(item, 'type')} />
 `}
+${get(item, 'type') === 'video'
+? `<div class="m-u-btn-group"><b class="tip muted mutedVideo" style="line-height: normal;
+padding: 10px 15px !important;display:block !important;" id="videoMute">${option('language', 'unmute')}</b>
+    <b class="tip muted unmutedVideo" style="line-height: normal;
+    padding: 10px 15px !important;display:none !important;" id="videoUNMute">${option('language', 'mute')}</b>
+    </div>`
+: ``}
 ${item.ownStory
               ? `<div class="s-v-block" style="display:none">
 <label class="v-label" id="ViewStoryCount">
@@ -409,27 +417,982 @@ ${item.viewersDetails.length > 0
 </div>` : ''}
 ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdded)
   ? ' ':`
-  <div class="col-lg-8 col-md-8 col-8 tip link">
-  <div class="do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
-      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" maxlength="50" formControlName="txtArea" style="border-radius:30px !important;height:42px">
+  <div class="col-lg-8 col-md-8 col-10 tip link">
+  <div class="container">
+  <div class="chat-panel" style="display:none;width: 250px;position: absolute;
+  bottom: 100%;
+  right: 0;
+  background: #fff;
+  font-size:16px !important;
+  border-radius:6px">
+    <div class="emoji-header menu-tabs hor-flex-parent">
+      <span class="menu-item flex-kid" data-react="smileys-and-people">😀</span>
+      <span class="menu-item flex-kid" data-react="animals-and-nature">🐶</span>
+      <span class="menu-item flex-kid" data-react="food-and-drink">🍏</span>
+      <span class="menu-item flex-kid" data-react="activity">⚽</span>
+      <span class="menu-item flex-kid" data-react="travel-and-places">🚗</span>
+      <span class="menu-item flex-kid" data-react="objects">⌚</span>
+      <span class="menu-item flex-kid" data-react="symbols">💛</span>
+    </div>
+    <div class="emoji-panel">
+    <div data-react="smileys-and-people" class="emoji-panel-tab-smileys-and-people">
+      <span>😀</span>
+      <span>😬</span>
+      <span>😁</span>
+      <span>😂</span>
+      <span>😃</span>
+      <span>😄</span>
+      <span>😅</span>
+      <span>😆</span>
+      <span>😇</span>
+      <span>😉</span>
+      <span>😊</span>
+      <span>🙂</span>
+      <span>🙃</span>
+      <span>😋</span>
+      <span>😌</span>
+      <span>😍</span>
+      <span>😘</span>
+      <span>😗</span>
+      <span>😙</span>
+      <span>😚</span>
+      <span>😜</span>
+      <span>😝</span>
+      <span>😛</span>
+      <span>🤑</span>
+      <span>🤓</span>
+      <span>😎</span>
+      <span>🤗</span>
+      <span>😏</span>
+      <span>😶</span>
+      <span>😐</span>
+      <span>😑</span>
+      <span>😒</span>
+      <span>🙄</span>
+      <span>🤔</span>
+      <span>😳</span>
+      <span>😞</span>
+      <span>😟</span>
+      <span>😠</span>
+      <span>😡</span>
+      <span>😔</span>
+      <span>😕</span>
+      <span>🙁</span>
+      <span>😣</span>
+      <span>😖</span>
+      <span>😫</span>
+      <span>😩</span>
+      <span>😤</span>
+      <span>😮</span>
+      <span>😱</span>
+      <span>😨</span>
+      <span>😰</span>
+      <span>😯</span>
+      <span>😦</span>
+      <span>😧</span>
+      <span>😢</span>
+      <span>😥</span>
+      <span>😪</span>
+      <span>😓</span>
+      <span>😭</span>
+      <span>😵</span>
+      <span>😲</span>
+      <span>🤐</span>
+      <span>😷</span>
+      <span>🤒</span>
+      <span>🤕</span>
+      <span>😴</span>
+      <span>💤</span>
+      <span>💩</span>
+      <span>😈</span>
+      <span>👿</span>
+      <span>👹</span>
+      <span>👺</span>
+      <span>💀</span>
+      <span>👻</span>
+      <span>👽</span>
+      <span>🤖</span>
+      <span>😺</span>
+      <span>😸</span>
+      <span>😹</span>
+      <span>😻</span>
+      <span>😼</span>
+      <span>😽</span>
+      <span>🙀</span>
+      <span>😿</span>
+      <span>😾</span>
+      <span>🙌</span>
+      <span>👏</span>
+      <span>👋</span>
+      <span>👍</span>
+      <span>👎</span>
+      <span>👊</span>
+      <span>✊</span>
+      <span>👌</span>
+      <span>✋</span>
+      <span>👐</span>
+      <span>💪</span>
+      <span>🙏</span>
+      <span>👆</span>
+      <span>👇</span>
+      <span>👈</span>
+      <span>👉</span>
+      <span>🖕</span>
+      <span>🖐</span>
+      <span>🤘</span>
+      <span>🖖</span>
+      <span>💅</span>
+      <span>👄</span>
+      <span>👅</span>
+      <span>👂</span>
+      <span>👃</span>
+      <span>👁</span>
+      <span>👀</span>
+      <span>👤</span>
+      <span>👥</span>
+      <span>🗣</span>
+      <span>👶</span>
+      <span>👦</span>
+      <span>👧</span>
+      <span>👨</span>
+      <span>👩</span>
+      <span>👱</span>
+      <span>👴</span>
+      <span>👵</span>
+      <span>👲</span>
+      <span>👳</span>
+      <span>👮</span>
+      <span>👷</span>
+      <span>💂</span>
+      <span>🕵</span>
+      <span>🎅</span>
+      <span>👼</span>
+      <span>👸</span>
+      <span>👰</span>
+      <span>🚶</span>
+      <span>🏃</span>
+      <span>💃</span>
+      <span>👯</span>
+      <span>👫</span>
+      <span>👬</span>
+      <span>👭</span>
+      <span>🙇</span>
+      <span>💁</span>
+      <span>🙅</span>
+      <span>🙆</span>
+      <span>🙋</span>
+      <span>🙎</span>
+      <span>🙍</span>
+      <span>💇</span>
+      <span>💆</span>
+      <span>💑</span>
+      <span>👩‍❤️‍👩</span>
+      <span>👨‍❤️‍👨</span>
+      <span>💏</span>
+      <span>👩‍❤️‍💋‍👩</span>
+      <span>👨‍❤️‍💋‍👨</span>
+      <span>👪</span>
+      <span>👨‍👩‍👧</span>
+      <span>👨‍👩‍👧‍👦</span>
+      <span>👨‍👩‍👦‍👦</span>
+      <span>👨‍👩‍👧‍👧</span>
+      <span>👩‍👩‍👦</span>
+      <span>👩‍👩‍👧</span>
+      <span>👩‍👩‍👧‍👦</span>
+      <span>👩‍👩‍👦‍👦</span>
+      <span>👩‍👩‍👧‍👧</span>
+      <span>👨‍👨‍👦</span>
+      <span>👨‍👨‍👧</span>
+      <span>👨‍👨‍👧‍👦</span>
+      <span>👨‍👨‍👦‍👦</span>
+      <span>👨‍👨‍👧‍👧</span>
+      <span>👚</span>
+      <span>👕</span>
+      <span>👖</span>
+      <span>👔</span>
+      <span>👗</span>
+      <span>👙</span>
+      <span>👘</span>
+      <span>💄</span>
+      <span>💋</span>
+      <span>👣</span>
+      <span>👠</span>
+      <span>👡</span>
+      <span>👢</span>
+      <span>👞</span>
+      <span>👟</span>
+      <span>👒</span>
+      <span>🎩</span>
+      <span>🎓</span>
+      <span>👑</span>
+      <span>⛑</span>
+      <span>🎒</span>
+      <span>👝</span>
+      <span>👛</span>
+      <span>👜</span>
+      <span>💼</span>
+      <span>👓</span>
+      <span>🕶</span>
+      <span>💍</span>
+      <span>🌂</span>
+    </div>
+    <div data-react="animals-and-nature" style="display:none" class="emoji-panel-tab-animals-and-nature">
+      <span>🐶</span>
+      <span>🐱</span>
+      <span>🐭</span>
+      <span>🐹</span>
+      <span>🐰</span>
+      <span>🐻</span>
+      <span>🐼</span>
+      <span>🐨</span>
+      <span>🐯</span>
+      <span>🦁</span>
+      <span>🐮</span>
+      <span>🐷</span>
+      <span>🐽</span>
+      <span>🐸</span>
+      <span>🐙</span>
+      <span>🐵</span>
+      <span>🙈</span>
+      <span>🙉</span>
+      <span>🙊</span>
+      <span>🐒</span>
+      <span>🐔</span>
+      <span>🐧</span>
+      <span>🐦</span>
+      <span>🐤</span>
+      <span>🐣</span>
+      <span>🐥</span>
+      <span>🐺</span>
+      <span>🐗</span>
+      <span>🐴</span>
+      <span>🦄</span>
+      <span>🐝</span>
+      <span>🐛</span>
+      <span>🐌</span>
+      <span>🐞</span>
+      <span>🐜</span>
+      <span>🕷</span>
+      <span>🦂</span>
+      <span>🦀</span>
+      <span>🐍</span>
+      <span>🐢</span>
+      <span>🐠</span>
+      <span>🐟</span>
+      <span>🐡</span>
+      <span>🐬</span>
+      <span>🐳</span>
+      <span>🐋</span>
+      <span>🐊</span>
+      <span>🐆</span>
+      <span>🐅</span>
+      <span>🐃</span>
+      <span>🐂</span>
+      <span>🐄</span>
+      <span>🐪</span>
+      <span>🐫</span>
+      <span>🐘</span>
+      <span>🐐</span>
+      <span>🐏</span>
+      <span>🐑</span>
+      <span>🐎</span>
+      <span>🐖</span>
+      <span>🐀</span>
+      <span>🐁</span>
+      <span>🐓</span>
+      <span>🦃</span>
+      <span>🕊</span>
+      <span>🐕</span>
+      <span>🐩</span>
+      <span>🐈</span>
+      <span>🐇</span>
+      <span>🐿</span>
+      <span>🐾</span>
+      <span>🐉</span>
+      <span>🐲</span>
+      <span>🌵</span>
+      <span>🎄</span>
+      <span>🌲</span>
+      <span>🌳</span>
+      <span>🌴</span>
+      <span>🌱</span>
+      <span>🌿</span>
+      <span>🍀</span>
+      <span>🎍</span>
+      <span>🎋</span>
+      <span>🍃</span>
+      <span>🍂</span>
+      <span>🍁</span>
+      <span>🌾</span>
+      <span>🌺</span>
+      <span>🌻</span>
+      <span>🌹</span>
+      <span>🌷</span>
+      <span>🌼</span>
+      <span>🌸</span>
+      <span>💐</span>
+      <span>🍄</span>
+      <span>🌰</span>
+      <span>🎃</span>
+      <span>🐚</span>
+      <span>🕸</span>
+      <span>🌎</span>
+      <span>🌍</span>
+      <span>🌏</span>
+      <span>🌕</span>
+      <span>🌖</span>
+      <span>🌗</span>
+      <span>🌘</span>
+      <span>🌑</span>
+      <span>🌒</span>
+      <span>🌓</span>
+      <span>🌔</span>
+      <span>🌚</span>
+      <span>🌝</span>
+      <span>🌛</span>
+      <span>🌜</span>
+      <span>🌞</span>
+      <span>🌙</span>
+      <span>⭐</span>
+      <span>🌟</span>
+      <span>💫</span>
+      <span>✨</span>
+      <span>🌤</span>
+      <span>⛅</span>
+      <span>🌥</span>
+      <span>🌦</span>
+      <span>🌧</span>
+      <span>⛈</span>
+      <span>🌩</span>
+      <span>🔥</span>
+      <span>💥</span>
+      <span>🌨</span>
+      <span>⛄</span>
+      <span>🌬</span>
+      <span>💨</span>
+      <span>🌪</span>
+      <span>🌫</span>
+      <span>💧</span>
+      <span>💦</span>
+      <span>🌊</span>
+    </div>
+    <div data-react="food-and-drink" style="display:none" class="emoji-panel-tab-food-and-drink">
+      <span>🍏</span>
+      <span>🍎</span>
+      <span>🍐</span>
+      <span>🍊</span>
+      <span>🍋</span>
+      <span>🍌</span>
+      <span>🍉</span>
+      <span>🍇</span>
+      <span>🍓</span>
+      <span>🍈</span>
+      <span>🍒</span>
+      <span>🍑</span>
+      <span>🍍</span>
+      <span>🍅</span>
+      <span>🍆</span>
+      <span>🌶</span>
+      <span>🌽</span>
+      <span>🍠</span>
+      <span>🍯</span>
+      <span>🍞</span>
+      <span>🧀</span>
+      <span>🍗</span>
+      <span>🍖</span>
+      <span>🍤</span>
+      <span>🍳</span>
+      <span>🍔</span>
+      <span>🍟</span>
+      <span>🌭</span>
+      <span>🍕</span>
+      <span>🍝</span>
+      <span>🌮</span>
+      <span>🌯</span>
+      <span>🍜</span>
+      <span>🍲</span>
+      <span>🍥</span>
+      <span>🍣</span>
+      <span>🍱</span>
+      <span>🍛</span>
+      <span>🍙</span>
+      <span>🍚</span>
+      <span>🍘</span>
+      <span>🍢</span>
+      <span>🍡</span>
+      <span>🍧</span>
+      <span>🍨</span>
+      <span>🍦</span>
+      <span>🍰</span>
+      <span>🎂</span>
+      <span>🍮</span>
+      <span>🍬</span>
+      <span>🍭</span>
+      <span>🍫</span>
+      <span>🍿</span>
+      <span>🍩</span>
+      <span>🍪</span>
+      <span>🍺</span>
+      <span>🍻</span>
+      <span>🍷</span>
+      <span>🍸</span>
+      <span>🍹</span>
+      <span>🍾</span>
+      <span>🍶</span>
+      <span>🍵</span>
+      <span>🍼</span>
+      <span>🍴</span>
+      <span>🍽</span>
+    </div>
+    <div data-react="activity" style="display:none" class="emoji-panel-tab-activity">
+      <span>⚽</span>
+      <span>🏀</span>
+      <span>🏈</span>
+      <span>⚾</span>
+      <span>🎾</span>
+      <span>🏐</span>
+      <span>🏉</span>
+      <span>🎱</span>
+      <span>⛳</span>
+      <span>🏌</span>
+      <span>🏓</span>
+      <span>🏸</span>
+      <span>🏒</span>
+      <span>🏑</span>
+      <span>🏏</span>
+      <span>🎿</span>
+      <span>⛷</span>
+      <span>🏂</span>
+      <span>⛸</span>
+      <span>🏹</span>
+      <span>🎣</span>
+      <span>🚣</span>
+      <span>🏊</span>
+      <span>🏄</span>
+      <span>🛀</span>
+      <span>⛹</span>
+      <span>🏋</span>
+      <span>🚴</span>
+      <span>🚵</span>
+      <span>🏇</span>
+      <span>🕴</span>
+      <span>🏆</span>
+      <span>🎽</span>
+      <span>🏅</span>
+      <span>🎖</span>
+      <span>🎗</span>
+      <span>🏵</span>
+      <span>🎫</span>
+      <span>🎟</span>
+      <span>🎭</span>
+      <span>🎨</span>
+      <span>🎪</span>
+      <span>🎤</span>
+      <span>🎧</span>
+      <span>🎼</span>
+      <span>🎹</span>
+      <span>🎷</span>
+      <span>🎺</span>
+      <span>🎸</span>
+      <span>🎻</span>
+      <span>🎬</span>
+      <span>🎮</span>
+      <span>👾</span>
+      <span>🎯</span>
+      <span>🎲</span>
+      <span>🎰</span>
+      <span>🎳</span>
+    </div>
+    <div data-react="travel-and-places" style="display:none" class="emoji-panel-tab-travel-and-places">
+      <span>🚗</span>
+      <span>🚕</span>
+      <span>🚙</span>
+      <span>🚌</span>
+      <span>🚎</span>
+      <span>🏎</span>
+      <span>🚓</span>
+      <span>🚑</span>
+      <span>🚒</span>
+      <span>🚐</span>
+      <span>🚚</span>
+      <span>🚛</span>
+      <span>🚜</span>
+      <span>🏍</span>
+      <span>🚲</span>
+      <span>🚨</span>
+      <span>🚔</span>
+      <span>🚍</span>
+      <span>🚘</span>
+      <span>🚖</span>
+      <span>🚡</span>
+      <span>🚠</span>
+      <span>🚟</span>
+      <span>🚃</span>
+      <span>🚋</span>
+      <span>🚝</span>
+      <span>🚄</span>
+      <span>🚅</span>
+      <span>🚈</span>
+      <span>🚞</span>
+      <span>🚂</span>
+      <span>🚆</span>
+      <span>🚇</span>
+      <span>🚊</span>
+      <span>🚉</span>
+      <span>🚁</span>
+      <span>🛩</span>
+      <span>🛫</span>
+      <span>🛬</span>
+      <span>⛵</span>
+      <span>🛥</span>
+      <span>🚤</span>
+      <span>⛴</span>
+      <span>🛳</span>
+      <span>🚀</span>
+      <span>🛰</span>
+      <span>💺</span>
+      <span>🚧</span>
+      <span>⛽</span>
+      <span>🚏</span>
+      <span>🚦</span>
+      <span>🚥</span>
+      <span>🏁</span>
+      <span>🚢</span>
+      <span>🎡</span>
+      <span>🎢</span>
+      <span>🎠</span>
+      <span>🏗</span>
+      <span>🌁</span>
+      <span>🗼</span>
+      <span>🏭</span>
+      <span>⛲</span>
+      <span>🎑</span>
+      <span>⛰</span>
+      <span>🏔</span>
+      <span>🗻</span>
+      <span>🌋</span>
+      <span>🗾</span>
+      <span>🏕</span>
+      <span>⛺</span>
+      <span>🏞</span>
+      <span>🛣</span>
+      <span>🛤</span>
+      <span>🌅</span>
+      <span>🌄</span>
+      <span>🏜</span>
+      <span>🏖</span>
+      <span>🏝</span>
+      <span>🌇</span>
+      <span>🌆</span>
+      <span>🏙</span>
+      <span>🌃</span>
+      <span>🌉</span>
+      <span>🌌</span>
+      <span>🌠</span>
+      <span>🎇</span>
+      <span>🎆</span>
+      <span>🌈</span>
+      <span>🏘</span>
+      <span>🏰</span>
+      <span>🏯</span>
+      <span>🏟</span>
+      <span>🗽</span>
+      <span>🏠</span>
+      <span>🏡</span>
+      <span>🏚</span>
+      <span>🏢</span>
+      <span>🏬</span>
+      <span>🏣</span>
+      <span>🏤</span>
+      <span>🏥</span>
+      <span>🏦</span>
+      <span>🏨</span>
+      <span>🏪</span>
+      <span>🏫</span>
+      <span>🏩</span>
+      <span>💒</span>
+      <span>🏛</span>
+      <span>⛪</span>
+      <span>🕌</span>
+      <span>🕍</span>
+      <span>🕋</span>
+      <span>⛩</span>
+    </div>
+    <div data-react="objects" style="display:none" class="emoji-panel-tab-objects">
+      <span>⌚</span>
+      <span>📱</span>
+      <span>📲</span>
+      <span>💻</span>
+      <span>🖥</span>
+      <span>🖨</span>
+      <span>🖱</span>
+      <span>🖲</span>
+      <span>🕹</span>
+      <span>🗜</span>
+      <span>💽</span>
+      <span>💾</span>
+      <span>💿</span>
+      <span>📀</span>
+      <span>📼</span>
+      <span>📷</span>
+      <span>📸</span>
+      <span>📹</span>
+      <span>🎥</span>
+      <span>📽</span>
+      <span>🎞</span>
+      <span>📞</span>
+      <span>📟</span>
+      <span>📠</span>
+      <span>📺</span>
+      <span>📻</span>
+      <span>🎙</span>
+      <span>🎚</span>
+      <span>🎛</span>
+      <span>⏱</span>
+      <span>⏲</span>
+      <span>⏰</span>
+      <span>🕰</span>
+      <span>⏳</span>
+      <span>⌛</span>
+      <span>📡</span>
+      <span>🔋</span>
+      <span>🔌</span>
+      <span>💡</span>
+      <span>🔦</span>
+      <span>🕯</span>
+      <span>🗑</span>
+      <span>🛢</span>
+      <span>💸</span>
+      <span>💵</span>
+      <span>💴</span>
+      <span>💶</span>
+      <span>💷</span>
+      <span>💰</span>
+      <span>💳</span>
+      <span>💎</span>
+      <span>🔧</span>
+      <span>🔨</span>
+      <span>🛠</span>
+      <span>⛏</span>
+      <span>🔩</span>
+      <span>⛓</span>
+      <span>🔫</span>
+      <span>💣</span>
+      <span>🔪</span>
+      <span>🗡</span>
+      <span>🛡</span>
+      <span>🚬</span>
+      <span>🏺</span>
+      <span>🔮</span>
+      <span>📿</span>
+      <span>💈</span>
+      <span>🔭</span>
+      <span>🔬</span>
+      <span>🕳</span>
+      <span>💊</span>
+      <span>💉</span>
+      <span>🌡</span>
+      <span>🏷</span>
+      <span>🔖</span>
+      <span>🚽</span>
+      <span>🚿</span>
+      <span>🛁</span>
+      <span>🔑</span>
+      <span>🗝</span>
+      <span>🛋</span>
+      <span>🛌</span>
+      <span>🛏</span>
+      <span>🚪</span>
+      <span>🛎</span>
+      <span>🖼</span>
+      <span>🗺</span>
+      <span>⛱</span>
+      <span>🗿</span>
+      <span>🛍</span>
+      <span>🎈</span>
+      <span>🎏</span>
+      <span>🎀</span>
+      <span>🎁</span>
+      <span>🎊</span>
+      <span>🎉</span>
+      <span>🎎</span>
+      <span>🎐</span>
+      <span>🎌</span>
+      <span>🏮</span>
+      <span>✉</span>
+      <span>📩</span>
+      <span>📨</span>
+      <span>📧</span>
+      <span>💌</span>
+      <span>📮</span>
+      <span>📪</span>
+      <span>📫</span>
+      <span>📬</span>
+      <span>📭</span>
+      <span>📦</span>
+      <span>📯</span>
+      <span>📥</span>
+      <span>📤</span>
+      <span>📜</span>
+      <span>📃</span>
+      <span>📑</span>
+      <span>📊</span>
+      <span>📈</span>
+      <span>📉</span>
+      <span>📄</span>
+      <span>📅</span>
+      <span>📆</span>
+      <span>🗓</span>
+      <span>📇</span>
+      <span>🗃</span>
+      <span>🗳</span>
+      <span>🗄</span>
+      <span>📋</span>
+      <span>🗒</span>
+      <span>📁</span>
+      <span>📂</span>
+      <span>🗂</span>
+      <span>🗞</span>
+      <span>📰</span>
+      <span>📓</span>
+      <span>📕</span>
+      <span>📗</span>
+      <span>📘</span>
+      <span>📙</span>
+      <span>📔</span>
+      <span>📒</span>
+      <span>📚</span>
+      <span>📖</span>
+      <span>🔗</span>
+      <span>📎</span>
+      <span>🖇</span>
+      <span>📐</span>
+      <span>📏</span>
+      <span>📌</span>
+      <span>📍</span>
+      <span>🚩</span>
+      <span>🏳</span>
+      <span>🏴</span>
+      <span>🔐</span>
+      <span>🔒</span>
+      <span>🔓</span>
+      <span>🔏</span>
+      <span>🖊</span>
+      <span>🖋</span>
+      <span>📝</span>
+      <span>🖍</span>
+      <span>🖌</span>
+      <span>🔍</span>
+      <span>🔎</span>
+    </div>
+    <div data-react="symbols" style="display:none" class="emoji-panel-tab-symbols">
+      <span>💛</span>
+      <span>💚</span>
+      <span>💙</span>
+      <span>💜</span>
+      <span>💔</span>
+      <span>💕</span>
+      <span>💞</span>
+      <span>💓</span>
+      <span>💗</span>
+      <span>💖</span>
+      <span>💘</span>
+      <span>💝</span>
+      <span>💟</span>
+      <span>🕉</span>
+      <span>🔯</span>
+      <span>🕎</span>
+      <span>🛐</span>
+      <span>⛎</span>
+      <span>🆔</span>
+      <span>🈳</span>
+      <span>🈹</span>
+      <span>📴</span>
+      <span>📳</span>
+      <span>🈶</span>
+      <span>🈚</span>
+      <span>🈸</span>
+      <span>🈺</span>
+      <span>🆚</span>
+      <span>🉑</span>
+      <span>💮</span>
+      <span>🉐</span>
+      <span>🈴</span>
+      <span>🈵</span>
+      <span>🈲</span>
+      <span>🆎</span>
+      <span>🆑</span>
+      <span>🆘</span>
+      <span>⛔</span>
+      <span>📛</span>
+      <span>🚫</span>
+      <span>❌</span>
+      <span>⭕</span>
+      <span>💢</span>
+      <span>🚷</span>
+      <span>🚯</span>
+      <span>🚳</span>
+      <span>🚱</span>
+      <span>🔞</span>
+      <span>📵</span>
+      <span>❗</span>
+      <span>❕</span>
+      <span>❓</span>
+      <span>❔</span>
+      <span>💯</span>
+      <span>🔅</span>
+      <span>🔆</span>
+      <span>🔱</span>
+      <span>🚸</span>
+      <span>🔰</span>
+      <span>🈯</span>
+      <span>💹</span>
+      <span>❎</span>
+      <span>✅</span>
+      <span>💠</span>
+      <span>🌀</span>
+      <span>➿</span>
+      <span>🌐</span>
+      <span>🏧</span>
+      <span>🛂</span>
+      <span>🛃</span>
+      <span>🛄</span>
+      <span>🛅</span>
+      <span>🚭</span>
+      <span>🚾</span>
+      <span>🚰</span>
+      <span>🚹</span>
+      <span>🚺</span>
+      <span>🚼</span>
+      <span>🚻</span>
+      <span>🚮</span>
+      <span>🎦</span>
+      <span>📶</span>
+      <span>🈁</span>
+      <span>🆖</span>
+      <span>🆗</span>
+      <span>🆙</span>
+      <span>🆒</span>
+      <span>🆕</span>
+      <span>🆓</span>
+      <span>🔟</span>
+      <span>🔢</span>
+      <span>⏸</span>
+      <span>⏯</span>
+      <span>⏹</span>
+      <span>⏺</span>
+      <span>⏭</span>
+      <span>⏮</span>
+      <span>⏩</span>
+      <span>⏪</span>
+      <span>🔀</span>
+      <span>🔁</span>
+      <span>🔂</span>
+      <span>🔼</span>
+      <span>🔽</span>
+      <span>⏫</span>
+      <span>⏬</span>
+      <span>🔤</span>
+      <span>🔡</span>
+      <span>🔠</span>
+      <span>🔣</span>
+      <span>🎵</span>
+      <span>🎶</span>
+      <span>➰</span>
+      <span>🔃</span>
+      <span>➕</span>
+      <span>➖</span>
+      <span>➗</span>
+      <span>💲</span>
+      <span>💱</span>
+      <span>🔚</span>
+      <span>🔙</span>
+      <span>🔛</span>
+      <span>🔝</span>
+      <span>🔜</span>
+      <span>🔘</span>
+      <span>⚪</span>
+      <span>⚫</span>
+      <span>🔴</span>
+      <span>🔵</span>
+      <span>🔶</span>
+      <span>🔷</span>
+      <span>🔺</span>
+      <span>⬛</span>
+      <span>⬜</span>
+      <span>🔻</span>
+      <span>🔲</span>
+      <span>🔳</span>
+      <span>🔈</span>
+      <span>🔉</span>
+      <span>🔊</span>
+      <span>🔇</span>
+      <span>📣</span>
+      <span>📢</span>
+      <span>🔔</span>
+      <span>🔕</span>
+      <span>🃏</span>
+      <span>🀄</span>
+      <span>🎴</span>
+      <span>🗨</span>
+      <span>💭</span>
+      <span>🗯</span>
+      <span>💬</span>
+      <span>🕐</span>
+      <span>🕑</span>
+      <span>🕒</span>
+      <span>🕓</span>
+      <span>🕔</span>
+      <span>🕕</span>
+      <span>🕖</span>
+      <span>🕗</span>
+      <span>🕘</span>
+      <span>🕙</span>
+      <span>🕚</span>
+      <span>🕛</span>
+      <span>🕜</span>
+      <span>🕝</span>
+      <span>🕞</span>
+      <span>🕟</span>
+      <span>🕠</span>
+      <span>🕡</span>
+      <span>🕢</span>
+      <span>🕣</span>
+      <span>🕤</span>
+      <span>🕥</span>
+      <span>🕦</span>
+      <span>🕧</span>
+    </div>
+  </div>
+  </div>
+</div>
+  <div class="stories-chat-item-replied-textarea do-chat-main w-100 d-flex align-self-center" style="margin-top:0;box-shadow:none">
+      <input type="text" id="txtArea" name="txtArea" #txtArea class="form-control signUpInput txtArea"  trim="blur" formControlName="txtArea" 
+      data-item-id="${get(item, 'id')}" style="border-radius:30px !important;height:42px" placeholder='${option('language', 'msg')}'>
+      <div id="emoji_div" class="upload-btn-wrapper align-self-center emoji-selector-show-hide" style="margin:0 10px;">
+         <img id="emoji_img" src="assets/img/smile.svg" style="margin-left:0">
+      </div>
         <div class="upload-btn-wrapper-msg-send align-self-center">
             <button id='BTN_Submit_Comment' #BTN_Submit_Comment  type="button" class="btn pt-0 pb-0 pl-0 pr-1">
                 <img id='IMG_Submit_Comment' #IMG_Submit_Comment src="assets/img/sendmsgbtn.svg" style="width: 40px;
-                height: 40px;
-                margin-left: 5px;">
+                height: 40px;">
             </button>
         </div>
     </div>
   </div>`}
-  ${get(item, 'type') === 'video'
-              ? `<div class="story-right"  title="Next Story">&#8594;</div>`
-              : ``}
+<div class="story-right" id="story-right"  title="Next Story">
+              <svg id="story-right1" class="story-right1" xmlns="http://www.w3.org/2000/svg" width="11.486" height="20.861" viewBox="0 0 11.486 20.861" style="&#10;  
+              height: 30px;&#10;    width: 30px;&#10;"><g class="story-right2" id="story-right2" transform="translate(0 0)">
+              <path class="story-right3" id="story-right3" style="fill:white" d="M65.294,11.176l-9.381,9.378a1.053,1.053,0,0,1-1.491-1.488l8.637-8.634L54.423,1.8A1.054,
+              1.054,0,0,1,55.914.309L65.3,9.687A1.063,1.063,0,0,1,65.294,11.176Z" transform="translate(-54.113 -0.001)"/>
+              </g></svg></div>
 </div>`;
         }
       },
       language: {
         unmute: 'Touch to unmute',
         mute: 'Touch to mute',
+        msg: 'Send Message',
         keyboardTip: 'Press space to see next',
         visitLink: 'Visit link',
         time: {
@@ -671,7 +1634,6 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
 
           video.onload = video.onplaying = video.oncanplay = () => {
             addMuted(video);
-
             storyViewer.classList.remove('loading');
           };
 
@@ -682,7 +1644,6 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
 
         const storyViewerWrap = document.createElement('div');
         storyViewerWrap.innerHTML = option('template', 'viewerItem')(storyData, currentItem);
-
         const storyViewer = storyViewerWrap.firstElementChild;
 
         storyViewer.className = `story-viewer muted ${className} ${!forcePlay ? 'stopped' : ''} ${option('backButton') ? 'with-back-button' : ''}`;
@@ -704,14 +1665,16 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
                 } else {
                   elements[index].style.display = "none";
                   document.getElementById("open_eye").setAttribute('viewBox', '0 0 24 24')
-                  document.getElementById("open_eye").innerHTML = 
-                  `<path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z" style="fill: #fff;"/>`;
+                  document.getElementById("open_eye").innerHTML =
+                    `<path d="M12.015 7c4.751 0 8.063 3.012 9.504 4.636-1.401 1.837-4.713 5.364-9.504 5.364-4.42 0-7.93-3.536-9.478-5.407 1.493-1.647 4.817-4.593 9.478-4.593zm0-2c-7.569 0-12.015 6.551-12.015 6.551s4.835 7.449 12.015 7.449c7.733 0 11.985-7.449 11.985-7.449s-4.291-6.551-11.985-6.551zm-.015 3c-2.209 0-4 1.792-4 4 0 2.209 1.791 4 4 4s4-1.791 4-4c0-2.208-1.791-4-4-4z" style="fill: #fff;"/>`;
                 }
               }
-            }
-            else {
+            } else {
               e.preventDefault();
               modal.close();
+              if(el.className === "close"){
+                window.location.reload();
+              }
             }
           };
         });
@@ -833,14 +1796,14 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
           }
         };
 
-        modalSlider.addEventListener('click', function(e) {
-          if(e.target.className == 'story-right') {
+        modalSlider.addEventListener('click', function (e) {
+          if (e.target.className == 'story-right' || e.target.className == 'story-right1' || e.target.className == 'story-right2' || e.target.className == 'story-right3') {
             zuck.navigateItem('next', event)
           }
-          if(e.target.className == 'story-left') {
-            if(zuck.data[zuck.internalData.currentStory].currentItem == 0) {
+          if (e.target.className == 'story-left' || e.target.className == 'story-left1' || e.target.className == 'story-left2' || e.target.className == 'story-left3') {
+            if (zuck.data[zuck.internalData.currentStory].currentItem == 0) {
               moveStoryItem();
-            }else {
+            } else {
               zuck.navigateItem('previous', event);
               zuck.internalData["currentVideoElement"].currentTime = 0;
             }
@@ -898,7 +1861,7 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
               nextTimer = false;
 
               const navigateItem = function () {
-                if(event.target.className != 'story-left' && event.target.className != 'story-right'){
+                if (event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.className != 'story-left' && event.target.className != 'story-right' && event.target.className != 'story-left1' && event.target.className != 'story-right1' && event.target.className != 'story-left2' && event.target.className != 'story-right2' && event.target.className != 'story-left3' && event.target.className != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
                   if (!direction) {
                     if (lastTouchOffset.x > window.screen.availWidth / 3 || !option('previousTap')) {
                       if (option('rtl')) {
@@ -915,13 +1878,26 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
                     }
                   }
                 }
+                if (window.innerWidth <= 1300 && window.innerHeight <= 1400) {
+                  if (event.target.className == 'story-right' || event.target.className == 'story-right1' || event.target.className == 'story-right2' || event.target.className == 'story-right3') {
+                    zuck.navigateItem('next', event)
+                  }
+                  if (event.target.className == 'story-left' || event.target.className == 'story-left1' || event.target.className == 'story-left2' || event.target.className == 'story-left3') {
+                    if (zuck.data[zuck.internalData.currentStory].currentItem == 0) {
+                      moveStoryItem();
+                    } else {
+                      zuck.navigateItem('previous', event);
+                      zuck.internalData["currentVideoElement"].currentTime = 0;
+                    }
+                  }
+                }
               };
 
               const storyViewerViewing = query('#zuck-modal .viewing');
 
               if (storyViewerViewing && video) {
-                if (storyViewerViewing.classList.contains('muted')) {
-                  unmuteVideoItem(video, storyViewerViewing);
+                if (storyViewerViewing.classList.contains('muted') && event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.id != 'story-left' && event.target.id != 'story-right' && event.target.id != 'story-left1' && event.target.id != 'story-right1' && event.target.id != 'story-left2' && event.target.id != 'story-right2' && event.target.id != 'story-left3' && event.target.id != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
+
                 } else {
                   navigateItem();
                 }
@@ -1039,7 +2015,6 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
               zuck.internalData.seenItems[lastStory] = true;
 
               saveLocalData('seenItems', zuck.internalData.seenItems);
-              updateStorySeenPosition();
             }
 
             const stories = query('#zuck-modal .story-viewer.next');
@@ -1127,7 +2102,7 @@ ${item.ownStory || (!item.ownStory && !item.isSubscribed && item.isFavouriteAdde
         });
         const callback = option('callbacks', 'onDataUpdate');
         if (callback) {
-          callback(zuck.data, () => { });
+          callback(zuck.data, () => {});
         }
       }
     };
@@ -1183,23 +2158,21 @@ story.classList.remove('seen');
 
       const callback = option('callbacks', 'onDataUpdate');
       if (callback) {
-        callback(zuck.data, () => { });
+        callback(zuck.data, () => {});
       }
     };
 
     // BIBLICAL
     const getStoryMorningGlory = function (what) {
-      // my wife told me to stop singing Wonderwall. I SAID MAYBE.
 
       const currentStory = zuck.internalData.currentStory;
       const whatElementYouMean = `${what}ElementSibling`;
-      if (currentStory) {
+      const data_stories = query(`#${id} [data-id="${currentStory}"]`)
+      if (currentStory && data_stories) {
         const foundStory = query(`#${id} [data-id="${currentStory}"]`)[whatElementYouMean];
-
         if (foundStory) {
           const storyId = foundStory.getAttribute('data-id');
           const data = zuck.data[storyId] || false;
-
           return data;
         }
       }
@@ -1211,11 +2184,12 @@ story.classList.remove('seen');
       each(document.querySelectorAll(`#${id} .story.seen`), (i, el) => {
         const newData = zuck.data[el.getAttribute('data-id')];
         const timeline = el.parentNode;
-
         if (!option('reactive')) {
           timeline.removeChild(el);
         }
-        zuck.update(newData, true);
+        if(newData){
+          zuck.update(newData, true);
+        }
       });
     };
 
@@ -1229,7 +2203,9 @@ story.classList.remove('seen');
 
       const cur = zuck.internalData.currentVideoElement;
       if (cur) {
-        cur.pause();
+        if(!cur.paused){
+          cur.pause();
+        }
       }
 
       if (itemElement.getAttribute('data-type') === 'video') {
@@ -1257,7 +2233,6 @@ story.classList.remove('seen');
         video.play();
 
         if (unmute && unmute.target) {
-          unmuteVideoItem(video, storyViewer);
         }
       } else {
         zuck.internalData.currentVideoElement = false;
@@ -1268,8 +2243,12 @@ story.classList.remove('seen');
       const video = zuck.internalData.currentVideoElement;
       if (video) {
         try {
-          video.pause();
-        } catch (e) { }
+          if(!video.paused){
+            if (event.target.id != 'videoTag' && event.target.id != 'videoMute' && event.target.id != 'videoUNMute' && event.target.className != 'story-left' && event.target.className != 'story-right' && event.target.className != 'story-left1' && event.target.className != 'story-right1' && event.target.className != 'story-left2' && event.target.className != 'story-right2' && event.target.className != 'story-left3' && event.target.className != 'story-right3' && event.target.parentElement.className != 'emoji-header menu-tabs hor-flex-parent' && event.target.parentElement.className != "emoji-panel-tab-smileys-and-people" && event.target.parentElement.className != "emoji-panel-tab-animals-and-nature" && event.target.parentElement.className != "emoji-panel-tab-food-and-drink" && event.target.parentElement.className != "emoji-panel-tab-activity" && event.target.parentElement.className != "emoji-panel-tab-travel-and-places" && event.target.parentElement.className != "emoji-panel-tab-objects" && event.target.parentElement.className != "emoji-panel-tab-symbols" && event.target.parentElement.className != "emoji-panel-tab-flags" && event.target.parentElement.className != "emoji-panel") {
+            video.pause();
+            }
+          }
+        } catch (e) {}
       }
     };
 
@@ -1296,16 +2275,16 @@ story.classList.remove('seen');
           const keyName = `zuck-${id}-${key}`;
           window.localStorage[keyName] = JSON.stringify(data);
         }
-      } catch (e) { }
+      } catch (e) {}
     };
 
     const getLocalData = function (key) {
       if (option('localStorage')) {
         const keyName = `zuck-${id}-${key}`;
 
-        return window.localStorage[keyName]
-          ? JSON.parse(window.localStorage[keyName])
-          : false;
+        return window.localStorage[keyName] ?
+          JSON.parse(window.localStorage[keyName]) :
+          false;
       } else {
         return false;
       }
@@ -1317,55 +2296,56 @@ story.classList.remove('seen');
     zuck.internalData.seenItems = getLocalData('seenItems') || {};
 
     zuck.add = zuck.update = (data, append) => {
-      const storyId = get(data, 'id');
-      const storyEl = query(`#${id} [data-id="${storyId}"]`);
-      const items = get(data, 'items');
-      let story;
-      let preview = false;
-
-      if (items[items.length - 1]) {
-        preview = items[items.length - 1].preview || '';
-      }
-
-      if (zuck.internalData.seenItems[storyId] === true) {
-        data.seen = true;
-      }
-
-      data.currentPreview = preview;
-
-      if (!storyEl) {
-        const storyItem = document.createElement('div');
-        storyItem.innerHTML = option('template', 'timelineItem')(data);
-
-        story = storyItem.firstElementChild;
-      } else {
-        story = storyEl;
-      }
-      if (data.seen === false) {
-        zuck.internalData.seenItems[storyId] = false;
-        saveLocalData('seenItems', zuck.internalData.seenItems);
-      }
-
-      story.setAttribute('data-id', storyId);
-      story.setAttribute('data-photo', get(data, 'photo'));
-      story.setAttribute('data-last-updated', get(data, 'lastUpdated'));
-      story.setAttribute('data-own-story', get(data, 'ownStory'));
-
-      parseStory(story);
-
-      if (!storyEl && !option('reactive')) {
-        if (append) {
-          timeline.appendChild(story);
-        } else {
-          prepend(timeline, story);
+      if(data){
+        const storyId = get(data, 'id');
+        const storyEl = query(`#${id} [data-id="${storyId}"]`);
+        const items = get(data, 'items');
+        let story;
+        let preview = false;
+  
+        if (items[items.length - 1]) {
+          preview = items[items.length - 1].preview || '';
         }
-      }
-
-      each(items, (i, item) => {
-        zuck.addItem(storyId, item, append);
-      });
-      if (!append) {
-        updateStorySeenPosition();
+  
+        if (zuck.internalData.seenItems[storyId] === true) {
+          data.seen = true;
+        }
+        data.currentPreview = preview;
+  
+        if (!storyEl) {
+          const storyItem = document.createElement('div');
+          storyItem.innerHTML = option('template', 'timelineItem')(data);
+  
+          story = storyItem.firstElementChild;
+        } else {
+          story = storyEl;
+        }
+        if (data.seen === false) {
+          zuck.internalData.seenItems[storyId] = false;
+          saveLocalData('seenItems', zuck.internalData.seenItems);
+        }
+  
+        story.setAttribute('data-id', storyId);
+        story.setAttribute('data-photo', get(data, 'photo'));
+        story.setAttribute('data-last-updated', get(data, 'lastUpdated'));
+        story.setAttribute('data-own-story', get(data, 'ownStory'));
+  
+        parseStory(story);
+  
+        if (!storyEl && !option('reactive')) {
+          if (append) {
+            timeline.appendChild(story);
+          } else {
+            prepend(timeline, story);
+          }
+        }
+  
+        each(items, (i, item) => {
+          zuck.addItem(storyId, item, append);
+        });
+        if (!append) {
+          updateStorySeenPosition();
+        }
       }
     };
 
@@ -1379,7 +2359,7 @@ story.classList.remove('seen');
       story.parentNode.removeChild(story);
     };
 
-     zuck.addItem = (storyId, data, append) => {
+    zuck.addItem = (storyId, data, append) => {
       const story = query(`#${id} > [data-id="${storyId}"]`);
       if (!option('reactive') && story) {
         const li = document.createElement('li');
@@ -1399,7 +2379,7 @@ story.classList.remove('seen');
       if (story) {
         parseItems(story, true, data);
       }
-    };  
+    };
 
     zuck.removeItem = (storyId, itemId) => {
       const item = query(`#${id} > [data-id="${storyId}"] [data-id="${itemId}"]`);
@@ -1410,7 +2390,6 @@ story.classList.remove('seen');
     };
 
     zuck.navigateItem = zuck.nextItem = (direction, event) => {
-      if(event !== undefined){
         const currentStory = zuck.internalData.currentStory;
         const currentItem = zuck.data[currentStory].currentItem;
         const storyViewer = query(`#zuck-modal .story-viewer[data-story-id="${currentStory}"]`);
@@ -1465,7 +2444,6 @@ story.classList.remove('seen');
             modal.next(event);
           }
         }
-      }
     };
 
     zuck.sendViewItemUpdate = function () {
@@ -1487,15 +2465,12 @@ story.classList.remove('seen');
       }
 
       if (option('backNative')) {
-        if (window.location.hash === `#!${id}`) {
-          window.location.hash = '';
-        }
-
         window.addEventListener(
           'popstate',
           e => {
-            if (window.location.hash !== `#!${id}`) {
+            if (window.location.hash === '') {
               window.location.hash = '';
+              window.location.reload();
             }
           },
           false
@@ -1515,7 +2490,6 @@ story.classList.remove('seen');
       each(option('stories'), (itemKey, item) => {
         zuck.add(item, true);
       });
-
       updateStorySeenPosition();
 
       const avatars = option('avatars') ? 'user-icon' : 'story-preview';
